@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+
+  
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CrossCutting\Veam.Application.Core\Veam.Application.Core.csproj" />
+    <ProjectReference Include="..\Veam.Center.Domain\Veam.Centers.Domain.csproj" />
+  </ItemGroup>
+
+ 
+ 
+
+</Project>

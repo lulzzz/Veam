@@ -1,0 +1,23 @@
+﻿@model Veam.Models.ApplicationUser
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject Veam.Data.ApplicationDbContext Context
+@{
+    ApplicationUser appUser = await UserManager.GetUserAsync(User);
+
+}
+
+
+@if (Model != null)
+{
+    <div class="user-panel">
+        <div class="pull-left image">
+            <img src="@Model.profilePictureUrl" class="img-circle profilePicture" alt="User Image">
+        </div>
+        <div class="pull-left info">
+            <p>@Model.Email</p>
+            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+    </div>
+
+}

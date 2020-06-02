@@ -1,0 +1,74 @@
+﻿@model Veam.EAM.Domain.AssetModelCommandVm
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminlteNetcoreEdit.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="separator text-bold">
+                <a data-toggle="collapse" data-parent="#accordion" href="#general" class="text-red">General Data </a>
+            </div>
+            <div id="general" class="panel-collapse collapse in">
+                <div class=" row">
+                    <div class=" col-md-6">
+                        <div class="form-group">
+                            <label asp-for="modelName" class="control-label"></label>
+                            <input asp-for="modelName" class="form-control" placeholder="Enter Asset Model Name Here" />
+                            <span asp-validation-for="modelName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="modelNumber" class="control-label"></label>
+                            <input asp-for="modelNumber" class="form-control" placeholder="Enter Asset Model No Here " />
+                            <span asp-validation-for="modelNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="productId" class="control-label"></label>
+                            <div class="input-group">
+                                <div mvc-lookup-for="productId" url="~/Lookup/ProductLookup" title="Product" placeholder="Choose Asset Category Here"></div>
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-success">Add New</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="manufacturerId" class="control-label"></label>
+                            <div class="input-group">
+                                <select asp-for="manufacturerId" id="my-select" class="form-control select2-dropdown " asp-items="ViewBag.manufacturerId"></select>
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-success">Add New</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="separator text-bold">
+                <a data-toggle="collapse" data-parent="#accordion" href="#other" class="text-red">Other Data </a>
+            </div>
+
+            <input type="hidden" asp-for="Id" />
+
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

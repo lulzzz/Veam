@@ -1,0 +1,87 @@
+﻿@model Veam.EAM.ViewModels.AssetWarrantyVM
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
+}
+
+
+
+<div class="row">
+    
+    <div class="box ">
+        <div class="col-md-12">
+            <form asp-action="UpdateWarranty">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="assetId" />
+                @*<div class="form-group">
+            <label asp-for="vendorId" class="control-label"></label>
+            <select asp-for="vendorId" class="form-control" asp-items="ViewBag.vendorId"></select>
+        </div>*@
+
+                <div class="form-group">
+                    <label asp-for="warrantyBy" class="control-label"></label>
+                    <input asp-for="warrantyBy" class="form-control" />
+                    <span asp-validation-for="warrantyBy" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="periodinMonths" class="control-label"></label>
+                    <input asp-for="periodinMonths" class="form-control" />
+                    <span asp-validation-for="periodinMonths" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StartDate" class="control-label"></label>
+                    <div class="input-group date">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input asp-for="StartDate" value="@DateTime.Today" class="form-control pull-right datepicker" type="text" />
+                    </div>
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="notes" class="control-label"></label>
+                    <input asp-for="notes" class="form-control" />
+                    <span asp-validation-for="notes" class="text-danger"></span>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <a asp-action="Index" class="btn btn-default">Return...</a>
+                    </div>
+                </div>
+                <!-- /.box-footer-->
+            </form>
+         
+        </div>
+    </div>
+</div>
+
+@section Styles{
+
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/adminlte/plugins/iCheck/all.css" />
+
+}
+
+@section Scripts {
+
+    <!-- iCheck -->
+    <script src="~/adminlte/plugins/iCheck/icheck.min.js"></script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+    $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' /* optional */
+            });
+        });</script>
+
+
+}

@@ -1,0 +1,138 @@
+﻿@model Veam.EAM.ViewModels.AssetQueryVM
+
+@{
+    // ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
+    //  @String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.qrcode))
+}
+
+
+<div class="row">
+    <!-- Qr box -->
+    <div class="col-md-3">
+        <div class="box box-primary">
+            <h3 class="box-title">Qr</h3>
+            <BoxTools></BoxTools>
+            <div class="box-body">
+                @await Component.InvokeAsync("AssetQr", Model.assetId)
+            </div>
+            <div class="box-footer">
+                <a asp-action="Index" class="btn btn-flat bg-purple btn-sm pull-right"
+                   style="border-radius:10%">Return ToList..</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- AssetDetail Box -->
+    <div class="col-md-4">
+        <div class="box box-primary">
+            <h3 class="box-title">Model Detail</h3>
+            <BoxTools></BoxTools>
+            <div class="box-body">
+                @await Component.InvokeAsync("AssetDetail", Model.assetId)
+                @*<partial name="_AssetDetail" />*@
+            </div>
+            <div class="box-footer">
+                <a asp-action="Edit" asp-route-id="@Model.assetId" class="btn bg-purple btn-sm pull-right "
+                   style="border-radius:10%"> Edit Asset Details</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Warranty box -->
+    <div class="col-md-5">
+        <div class="box box-primary">
+            <h3 class="box-title center">Warranty Record</h3>
+            <BoxTools></BoxTools>
+            <div class="box-body">
+                @await Component.InvokeAsync("Warranty", Model.assetId)
+            </div>
+            <div class="box-footer">
+                <a asp-action="UpdateWarranty" asp-route-id="@Model.assetId" class="btn bg-purple btn-sm pull-right "
+                   style="border-radius:10%"> update Warranty</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Tabs (Pulled to the right) -->
+<div class="box box-primary">
+    <div class="box-body">
+
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs ">
+                <li class="active"><a href="#purchase" data-toggle="tab">purchase</a></li>
+                <li><a href="#History" data-toggle="tab">History</a></li>
+                <li><a href="#Files" data-toggle="tab">Files</a></li>
+                <li><a href="#Maint" data-toggle="tab">Maint.</a></li>
+                <li class="pull-right header"><i class="fa fa-th"></i> AssetDetails</li>
+
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane " id="purchase">
+                    @await Component.InvokeAsync("BillDetail", Model.assetId)
+                    <a class="btn btn-success" style="margin-bottom:10px" onclick="ShowPopup('@Url.Action("AttachBill","AssetPurchase", new { masterid = Model.assetId })')">
+                        <i class="fa fa-plus"></i> AttachBill
+                    </a>
+                </div>
+                <div class="tab-pane " id="History">
+                    <partial name="APICrud/_modelPopUp" />
+                    @*<partial name="APICrud/_SubmitDelete" />*@
+                    <a class="btn btn-success" onclick="ShowPopup('@Url.Action("Checkout","Checkout", new { masterid = Model.assetId })')">
+                        <i class="fa fa-plus"></i> checkOut
+                    </a>
+
+                    @*<a asp-controller="CheckOut" asp-action="Checkout" asp-route-id="@Model.assetId"
+                           class="btn btn-primary btn-xs">
+                        </a>*@
+                    @await Component.InvokeAsync("AssetHistory", Model.assetId)
+                </div>
+                <div class="tab-pane " id="Files">
+                    <a class="btn btn-success" onclick="ShowPopup('@Url.Action("Checkout","Checkout", new { masterid = Model.assetId })')">
+                        <i class="fa fa-plus"></i> Attache Files
+                    </a>
+                    @await Component.InvokeAsync("AssetFiles", Model.assetId)
+                </div>
+                <div class="tab-pane " id="Maint">
+                    <a class="btn btn-success" onclick="ShowPopup('@Url.Action("Checkout","Checkout", new { masterid = Model.assetId })')">
+                        <i class="fa fa-plus"></i>Maintenance
+                    </a>
+                    @await Component.InvokeAsync("Maintenance", Model.assetId)
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        var popup, dataTable;
+        var entity = 'CheckOut';
+        var apiurl = '/api/Checkout/checkoutpostapi';//'checkout/'+ entity;
+        function chechoutAsset(form) {
+            $.validator.unobtrusive.parse(form);
+            if ($(form).valid()) {
+                var data = $(form).serializeJSON();
+                data = JSON.stringify(data);
+                $.ajax({
+                    type: 'POST',
+                    url: apiurl,
+                    data: data,
+                    contentType: 'application/json',
+                    success: function (data) {
+                        if (data.success) {
+                            popup.modal('hide');
+                            ShowMessage(data.message);
+                            dataTable.ajax.reload();
+                        } else {
+                            ShowMessageError(data.message);
+                            console.log(err);
+                        }
+                    }
+                });
+                return false;
+            }
+        }
+
+    </script>
+}

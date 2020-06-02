@@ -1,0 +1,63 @@
+﻿@model Veam.Centers.ViewModels.HallQueryVM
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
+    ViewData["EntityIcon"] = "fa fa-cubes";
+}
+
+
+
+<div class="row">
+    <div class="col-md-9">
+        <!-- Default box -->
+        <div class="box box-primary">
+            <div class="box-body">
+                <div>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.CenterName)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.CenterName)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.hallName)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.hallName)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.FloorNo)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.FloorNo)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.HallNo)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.HallNo)
+                        </dd>
+
+                    </dl>
+
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <div class="form-group">
+                    <a asp-action="Edit" asp-route-id="@Model.HallId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Index" class="btn btn-default">Return...</a>
+                </div>
+            </div>
+            <!-- /.box-footer-->
+        </div>
+        <!-- /.box -->
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+
+
+

@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Version>4.2.1</Version>
+    <DebugType>Full</DebugType>
+    <Nullable>enable</Nullable>
+    <Company>NonFactors</Company>
+    <Product>Mvc.Lookup</Product>
+    <LangVersion>8.0</LangVersion>
+    <GenerateFullPaths>true</GenerateFullPaths>
+    <PackageId>NonFactors.Lookup.Core.Mvc6</PackageId>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <Description>Data lookup controls for ASP.NET Core projects</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.19" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
+  </ItemGroup>
+
+</Project>

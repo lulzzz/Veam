@@ -1,0 +1,248 @@
+﻿@model Veam.EAM.ViewModels.AssetPurchaseSaveVM
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
+}
+
+
+
+
+<Seperator id="BillDetails" name="Bill Details">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="billNo" class="control-label"></label>
+                <input id="BillNo" asp-for="billNo" class="form-control" />
+                <span asp-validation-for="billNo" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="billedDate" class="control-label"></label>
+                <DatePicker>
+                    <input id="BillDate" asp-for="billedDate" value="" class="form-control  pull-right datepicker" type="text" />
+                </DatePicker>
+                <span asp-validation-for="billedDate" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label asp-for="notes" class="control-label"></label>
+                <input Id="Notes" asp-for="notes" class="form-control" />
+                <span asp-validation-for="notes" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+</Seperator>
+
+<Seperator id="asset" name="Select Asset Of the Bill">
+
+    <div class=" row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="centerId" class="control-label"></label>
+                <select id="centerList" asp-for="centerId" class="form-control select2" asp-items="@Model.CenterList"></select>
+                <span asp-validation-for="centerId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="hallid" class="control-label"></label>
+                <select id="hallList" asp-for="hallid" class="form-control select2" asp-items="@Model.HallList"></select>
+                <span asp-validation-for="hallid" class="text-danger"></span>
+            </div>
+        </div>
+        @*<div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="assetId" class="control-label"></label>
+                    <select id="assetList" asp-for="assetId " class="form-control select2" asp-items="@Model.AssetList"></select>
+                    <span asp-validation-for="assetId" class="text-danger"></span>
+                </div>
+            </div>*@
+        @*<div class="col-md-3">
+                <div class="form-group">
+                    <input type="button" id="add" value="add" />
+                </div>
+            </div>*@
+        <div style="padding:10px 0px; text-align:right">
+            <input id="submit" type="button" value="Save" style="padding:10px 20px" />
+        </div>
+    </div>
+
+
+    <div id="BillItems" class="tablecontainer">
+
+    </div>
+
+</Seperator>
+@*<partial name="_Grid" />*@
+
+
+
+@section Styles{
+
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/adminlte/plugins/iCheck/all.css" />
+    <!-- Jtable -->
+    @*<link href="~/lib/jtable/lib/themes/metro/lightgray/jtable.min.css" rel="stylesheet" />*@
+    <link href="~/lib/jtable/lib/themes/basic/jtable_basic.min" rel="stylesheet" />
+}
+
+@section Scripts {
+
+    <!-- Jtable -->
+    <script src="~/lib/jtable/lib/jquery.jtable.min.js"></script>
+    <!-- iCheck -->
+    <script src="~/adminlte/plugins/iCheck/icheck.min.js"></script>
+
+
+
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+    <script type="text/javascript">
+        var entity = 'Asset';
+        var apiurl = '/api/' + entity;
+        var BillItems = [];
+        var Id = 0;
+        $(document).ready(function () {
+
+            //Prepare jtable plugin
+            $('#BillItems').jtable({
+                //title: 'Asset List',
+                //paging: true,
+                //sorting: true,
+                //defaultSorting: 'Name ASC',
+                selecting: true, //Enable selecting
+                multiselect: true, //Allow multiple selecting
+                selectingCheckboxes: true, //Show checkboxes on first column
+                selectOnRowClick: false, //Enable this to only select using checkboxes
+                //createFormColumns: 2,
+                actions: {
+                    listAction: apiurl,//+'/GetAssetAsync',//'/Demo/StudentList',
+                    //deleteAction: '/Demo/DeleteStudent',
+                    //updateAction: '/Demo/UpdateStudent',
+                    //createAction: '/Demo/CreateStudent'
+                },
+                fields: {
+                    assetId: { key: true, create: false, edit: false, },
+                    assetName: { title: 'assetName', width: '23%', inputClass: 'validate[required]' },
+                    assetTag: { title: 'assetTag', inputClass: 'validate[required,custom[email]]' },
+                    modalname: { title: 'modalname', type: 'password', list: false, inputClass: 'validate[required]' },
+                    modelNo: { title: 'modelNo', width: '13%', options: { 'M': 'Male', 'F': 'Female' } },
+                    product: { title: 'product', width: '12%', options: '/Demo/GetCityOptions' },
+                    brand: { title: 'brand', width: '15%', type: 'date', displayFormat: 'yy-mm-dd', inputClass: 'validate[required,custom[date]]' },
+                    status: { title: 'status', list: false, type: 'radiobutton', options: { '1': 'Primary school', '2': 'High school', '3': 'University' }, inputClass: 'validate[required]' },
+
+                },
+
+
+                //Register to selectionChanged event to hanlde events
+                selectionChanged: function () {
+                    //Get all selected rows
+                    var $selectedRows = $('#BillItems').jtable('selectedRows');
+                     $('#SelectedRowList').empty();
+                    if ($selectedRows.length > 0) {
+                        $selectedRows.each(function () {
+                            var record = $(this).data('record');
+                            Id = record.assetId;
+                          //  alert(Id);
+                            // check if exist
+                            var idx = $.inArray(Id, BillItems);
+                            if (idx == -1) {
+                                BillItems.push({
+                                    assetId: Id,
+                                });
+                            }
+                            //else {
+                            //    BillItems.splice(idx, 1);
+                            //}
+
+                            //BillItems.push({ //update selected row to BillItem[]
+                            //    assetId: Id,
+                            //});
+                        });
+                    }
+                },
+
+               //var $selectedRows = $('#BillItems').jtable('selectedRows'),
+               // $selectedRows.each(function () {
+               //     var record = $(this).data('record');
+               //     Id = record.assetId;
+               //     var idx = $.inArray(Id, BillItems);
+               //     if (idx == -1) {
+               //         BillItems.push({
+               //             assetId: Id,
+               //         });
+               //     }
+               // }),
+
+            });
+
+            //Load student list from server
+            $('#BillItems').jtable('load');
+
+
+        });
+
+        //Save button click function
+        $('#submit').click(function () {
+            //validation of order
+            var isAllValid = true;
+            if (BillItems.length == 0) {
+                alert("Please selected atleast one item");
+                isAllValid = false;
+            }
+
+            //Save if valid
+            if (isAllValid) {
+                var data = {
+                    billNo: $('#BillNo').val(),
+                    billDate: $('#BillDateDate').val(),
+                    notes: $('#Notes').val(),
+                    Assets: BillItems
+                }
+
+                $(this).val('Please wait...');
+
+                $.ajax({
+                    url: '/AssetPurchase/Create',
+                    type: "POST",
+                    data: JSON.stringify(data),
+                    // dataType: "JSON",
+                    contentType: "application/json",
+                    success: function (d) {
+                        //check is successfully save to database
+                        if (d.status == true) {
+                            //will send status from server side
+                            alert('Successfully done.');
+                            //clear form
+                            BillItems = [];
+                            $('#BillNo').val('');
+                            $('#BillDate').val('');
+                            $('#BillItems').empty();
+                        }
+                        else {
+                            alert('Failed');
+                        }
+                        $('#submit').val('Save');
+                    },
+                    error: function () {
+                        alert('Error. Please try again.');
+                        $('#submit').val('Save');
+                    }
+                });
+            }
+
+        });
+
+    </script>
+
+
+}

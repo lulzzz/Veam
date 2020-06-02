@@ -1,0 +1,67 @@
+﻿@model Veam.EAM.Domain.AssetUploads
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminlteNetcoreIndex.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>AssetUploads</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="assetId" class="control-label"></label>
+                <select asp-for="assetId" class="form-control" asp-items="ViewBag.assetId"></select>
+                <span asp-validation-for="assetId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="userId" class="control-label"></label>
+                <input asp-for="userId" class="form-control" />
+                <span asp-validation-for="userId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fileName" class="control-label"></label>
+                <input asp-for="fileName" class="form-control" />
+                <span asp-validation-for="fileName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fileSize" class="control-label"></label>
+                <input asp-for="fileSize" class="form-control" />
+                <span asp-validation-for="fileSize" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fileNotes" class="control-label"></label>
+                <input asp-for="fileNotes" class="form-control" />
+                <span asp-validation-for="fileNotes" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="createdAt" class="control-label"></label>
+                <input asp-for="createdAt" class="form-control" />
+                <span asp-validation-for="createdAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

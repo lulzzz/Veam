@@ -1,0 +1,151 @@
+﻿@model Veam.EAM.ViewModels.AddToCenterVM
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminlteNetcoreCreate.cshtml";
+    ViewData["EntityIcon"] = "fa fa-bank";
+    ViewData["CreateInfo"] = "Asset Description.";
+}
+
+
+<div class="row ">
+    <div class="col-md-12">
+        <form asp-action="AddToCenter">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <Seperator id="general" name="GeneralData">
+            <div class=" row">
+                <div class=" col-md-4">
+                    <div class="form-group">
+                        <label asp-for="assetName" class="control-label"></label>
+                        <input asp-for="assetName" class="form-control" />
+                        <span asp-validation-for="assetName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+
+                        <label asp-for="assetTag" class="control-label"></label>
+                        <input asp-for="assetTag" class="form-control" />
+                        <span asp-validation-for="assetTag" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class=" col-md-4">
+                    <div class="form-group">
+                        <label asp-for="serialNo" class="control-label"></label>
+                        <input asp-for="serialNo" class="form-control" />
+                        <span asp-validation-for="serialNo" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </Seperator>
+
+        <Seperator id="AssetModel" name="Asset Model Details">
+
+            <div class="row">
+
+                <div class=" col-md-6">
+                    <div class="form-group">
+                        <label asp-for="modalname" class="control-label"></label>
+                        <input asp-for="modalname" class="form-control" />
+                        <span asp-validation-for="modalname" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class=" col-md-6">
+                    <div class="form-group">
+                        <label asp-for="modelNo" class="control-label"></label>
+                        <input asp-for="modelNo" class="form-control" />
+                        <span asp-validation-for="modelNo" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group widget example col-xl-6">
+                        <label asp-for="product" class="control-label"></label>
+                     
+                        <select asp-for="product" class="form-control select2" asp-items="@Model.Products"></select>
+                       
+                        <span asp-validation-for="product" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class=" col-md-6">
+                    <div class="form-group">
+                        <label asp-for="brand" class="control-label"></label>
+                        <input asp-for="brand" class="form-control" />
+                        <span asp-validation-for="brand" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+        </Seperator>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="centerId" class="control-label"></label>
+                    <select id="centerList" asp-for="centerId" class="form-control select2" asp-items="@Model.center"></select>
+                    <span asp-validation-for="centerId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class=" col-md-6">
+                <div class="form-group">
+                    <label asp-for="hallId" class="control-label"></label>
+                    <select id="hallList" asp-for="hallId" class="form-control select2" asp-items="@Model.Hall"></select>
+                    <span asp-validation-for="hallId" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        </form>
+    </div>
+</div>
+
+
+@section Styles{
+
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/adminlte/plugins/iCheck/all.css" />
+
+}
+
+@section Scripts {
+
+    <!-- iCheck -->
+    <script src="~/adminlte/plugins/iCheck/icheck.min.js"></script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' /* optional */
+            });
+        });
+
+
+        $(document).ready(function () {
+            loadHallByCenter();
+        });
+
+         function loadHallByCenter() {
+             $('#centerList').change(function () {
+           var url = '@Url.Content("~/")' + "Select/GetHallbyCenterId";
+             $.getJSON(url, { centerId: $("#centerList").val() }, function (data) {
+            var items = '';
+            $("#hallList").empty();
+            $.each(data, function (i, section) {
+                items += "<option value='" + section.value + "'>" + section.text + "</option>";
+            });
+                 $('#hallList').html(items);
+                });
+         });
+        };
+    </script>
+
+
+}

@@ -1,0 +1,44 @@
+﻿@model Veam.CenterRent.ViewModels.BuildingQueryVM
+
+@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
+}
+
+
+    <div>
+
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.buildingId)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.buildingId)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.buildingNo)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.buildingNo)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.buildingName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.buildingName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Addressfull)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Addressfull)
+            </dd>
+
+        </dl>
+
+    </div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

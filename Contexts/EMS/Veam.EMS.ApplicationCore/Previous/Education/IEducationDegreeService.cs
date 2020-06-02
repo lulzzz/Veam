@@ -1,0 +1,16 @@
+﻿using Veam.EMS.ApplicationCore.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace Veam.EMS.ApplicationCore.Interfaces.Services
+{
+    public interface IEducationDegreeService
+    {
+        Task<EducationDegreeModel> GetByIdAsync(int id);
+        Task<List<EducationDegreeModel>> GetAllAsync();
+        Task<List<EducationDegreeModel>> GetByNameAsync(string name);
+        Task<EducationDegreeModel> AddAsync(EducationDegreeModel model);
+        Task UpdateAsync(EducationDegreeModel model);
+        Task DeleteAsync(int id);
+    }
+}

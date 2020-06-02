@@ -1,0 +1,43 @@
+﻿<form action="sent.php" name="form1" method="post">
+    UK<input type="radio" name="address" value="UK" />
+    EU<input type="radio" name="address" value="EU" />
+    <div id="UKAddress">
+        Name <input type="text" name="name" /> <br />
+        UK <input type="radio" name="from" value="UK"><br />
+        Address Line 1 <input type="text" name="ad1" /> <br />
+        Address Line 2 <input type="text" name="ad2" /> <br />
+        Town <input type="text" name="town" /> <br />
+        Post Code <input type="text" name="post_code" /> <br />
+    </div>
+    <div id="EUAddress">
+        EU <input type="radio" name="from" value="UK"><br />
+        Address Line 1 <input type="text" name="ad1" /> <br />
+        Address Line 2 <input type="text" name="ad2" /> <br />
+        Town <input type="text" name="town" /> <br />
+        Post Code <input type="text" name="post_code" /> <br />
+        Country <input type="text" name="post_code" /> <br />
+    </div>
+</form>
+
+<script>
+    $("input[name = address]").click(function () { 
+        if ($(this).val() == "UK") {
+            $("#UKAddress").show();
+            $("#EUAddress").hide();
+        }
+        else {
+            $("#UKAddress").hide();
+            $("#EUAddress").show();
+        }
+    });
+</script>
+<script>
+    $('input[type="radio"]').click(function () {
+        var inputValue = $(this).attr("value");
+        debugger;
+        var targetBox = $("." + inputValue);
+        $(".box").not(targetBox).hide();
+        $(targetBox).show();
+    });
+
+</script>

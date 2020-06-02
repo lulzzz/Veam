@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Veam.Base.ViewModels.ProductQueryVM>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminlteNetcoreIndex.cshtml";
+    ViewData["EntityIcon"] = "fa fa-tags";
+    ViewData["ListTitle"] = "List Of Products";
+    ViewData["IndexInfo"] = "It created MasterDatafor Products";
+}
+
+
+<table class="table table-hover table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>   
+                <a asp-action="Create" class="btn bg-olive-active btn-sm "><i class="fa fa-plus margin-r-5"></i><span>Add New</span></a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productName)
+            </th>
+            <th class="hidden">
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            @*<th class="hidden">
+                @Html.DisplayNameFor(model => model.barcode)
+            </th>*@
+            <th >
+                @Html.DisplayNameFor(model => model.productCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productType.TypeName)
+            </th>
+            <th class="hidden">
+                @Html.DisplayNameFor(model => model.uom)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <div class="tools">
+                        <a asp-action="Edit" asp-route-id="@item.productId" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                        <a asp-action="Details" asp-route-id="@item.productId" class="btn btn-primary btn-xs"><i class="fa fa-list"></i></a>
+                        <a asp-action="Delete" asp-route-id="@item.productId" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                    </div>
+                    
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productName)
+                </td>
+                <td class="hidden">
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                @*<td class="hidden">
+                    @Html.DisplayFor(modelItem => item.barcode)
+                </td>*@
+                <td >
+                    @Html.DisplayFor(modelItem => item.productCategory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productType.TypeName)
+                </td>
+                <td class="hidden">
+                    @Html.DisplayFor(modelItem => item.uom)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

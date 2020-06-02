@@ -1,0 +1,22 @@
+﻿
+@section Styles{
+
+    <!-- for Lookup-->
+    <link href="~/css/mvc-lookup/mvc-lookup.css" rel="stylesheet">
+
+}
+
+
+
+@section Scripts{
+    <!-- for Lookup-->
+    <script src="~/js/mvc-lookup/mvc-lookup.js"></script>
+
+    <script>
+        [].forEach.call(document.getElementsByClassName('mvc-lookup'), function (element) {
+            new MvcLookup(element);
+        });
+
+    </script>
+}
+

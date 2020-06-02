@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+
+    <PackageReference Include="Dapper" Version="2.0.30" />
+
+    
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
+
+
+  </ItemGroup>
+  
+  
+
+  <ItemGroup>
+    <ProjectReference Include="..\Veam.EMS.ApplicationCore\Veam.EMS.Application.csproj" />
+    <ProjectReference Include="..\Veam.EMS.Domain\Veam.EMS.Domain.csproj" />
+  </ItemGroup>
+ 
+
+
+</Project>

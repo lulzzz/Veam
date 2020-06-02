@@ -1,0 +1,154 @@
+﻿@model Veam.EAM.Domain.AssetModelCommandVm
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminlteNetcoreCreate.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="separator text-bold">
+                <a data-toggle="collapse" data-parent="#accordion" href="#general" class="text-red">General Data </a>
+            </div>
+            <div id="general" class="panel-collapse collapse in">
+                <div class=" row">
+                    <div class=" col-md-6">
+                        <div class="form-group">
+                            <label asp-for="modelName" class="control-label"></label>
+                            <input asp-for="modelName" class="form-control" placeholder="Enter Asset Model Name Here" />
+                            <span asp-validation-for="modelName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="modelNumber" class="control-label"></label>
+                            <input asp-for="modelNumber" class="form-control" placeholder="Enter Asset Model No Here " />
+                            <span asp-validation-for="modelNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="productId" class="control-label"></label>
+                            <div class="input-group">
+                                <div mvc-lookup-for="productId" url="~/Lookup/ProductLookup" title="Product" placeholder="Choose Asset Category Here"></div>
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-success">Add New</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="manufacturerId" class="control-label"></label>
+                            <div class="input-group">
+                                <select asp-for="manufacturerId" id="my-select" class="form-control select2-dropdown " asp-items="ViewBag.manufacturerId"></select>
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-success">Add New</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="separator text-bold">
+                <a data-toggle="collapse" data-parent="#accordion" href="#other" class="text-red">Other Data </a>
+            </div>
+            @*  <div id="other" class="panel-collapse collapse in">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="depriciationId" class="control-label"></label>
+                                <div class="input-group">
+                                    <select asp-for="depriciationId" class="form-control" asp-items="ViewBag.depriciationId"></select>
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-success"> Add New</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-md-6">
+                            <div class="form-group">
+                                <label asp-for="eol" class="control-label"></label>
+                                <div class="input-group">
+                                    <input asp-for="eol" placeholder="Enter Est. Life in Months" class="form-control" />
+                                    <span class="input-group-addon bg-blue-active">Months</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class=" col-md-3">
+                            <div class="form-group">
+                                <label asp-for="modelImage" class="control-label"></label>
+                                <div>
+                                    <span class="btn fileinput-button">
+                                        <!-- The file input field used as target for the file upload widget -->
+                                        <input id="fileupload" type="file" name="files" multiple="">
+                                    </span>
+                                </div>
+                                <div>
+                                    <div id="progress" class="progress">
+                                        <div class="progress-bar progress-bar-success"></div>
+                                    </div>
+                                </div>
+                                <p class="help-block">uploade model image here.</p>
+                            </div>
+
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label asp-for="notes" class="control-label"></label>
+                                <textarea asp-for="notes" class="form-control" rows="3" placeholder="Enter Other Details Here!"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+        </form>
+    </div>
+</div>
+
+
+
+@section Styles{
+
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/adminlte/plugins/iCheck/all.css" />
+
+}
+
+@section Scripts {
+
+    <!-- iCheck -->
+    <script src="~/adminlte/plugins/iCheck/icheck.min.js"></script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+
+
+        $('#my-select').select2({
+            placeholder: 'Select an option',
+            allowClear: 'false'
+        });
+
+
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' /* optional */
+            });
+        });
+
+    </script>
+}

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Veam.Base.ViewModels.VendorLineQueryVM >
+   
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminlteNetcoreIndex.cshtml";
+}
+
+
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>
+            <a asp-action="Create" class="btn bg-olive-active btn-sm "><i class="fa fa-plus margin-r-5"></i><span>Add New</span></a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.jobTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactFullName)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.mobilePhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.officePhone)
+            </th>
+          
+            <th>
+                @Html.DisplayNameFor(model => model.personalEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.workEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vendorName)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.vendorLineId"><i class="fa fa-pencil"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.vendorLineId"><i class="fa fa-list"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.vendorLineId"><i class="fa fa-trash"></i></a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.jobTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactFullName)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.mobilePhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.officePhone)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.personalEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.workEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vendorName)
+            </td>
+
+        </tr>
+}
+    </tbody>
+</table>

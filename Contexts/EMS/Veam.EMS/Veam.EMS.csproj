@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <!--<TargetFramework>netstandard2.1</TargetFramework>-->
+       <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Views\**" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+   
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CrossCutting\Barebone\Barebone.csproj" />
+    <ProjectReference Include="..\..\EAM\Veam.EAM.Application\Veam.EAM.Application.csproj" />
+    <ProjectReference Include="..\Veam.EMS.Persistance\Veam.EMS.Persistance.csproj" />
+  </ItemGroup>
+
+ 
+  
+  
+</Project>

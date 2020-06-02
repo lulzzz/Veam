@@ -1,0 +1,141 @@
+﻿@model Veam.EAM.Domain.AssetMaintenance
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
+}
+
+
+<div>
+    
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AssetMaintanceType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssetMaintanceType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.isInWarranty)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.isInWarranty)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CompletionDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CompletionDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.assetMaintanceTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.assetMaintanceTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.discription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.discription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PurchaseOrderNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseOrderNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.billedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.billedDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.billedCost)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.billedCost)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.billCopy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.billCopy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WarrantyMonths)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WarrantyMonths)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.warrantyStartDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.warrantyStartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.warrantyEndDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.warrantyEndDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.warrantyBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.warrantyBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Asset)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Asset.assetName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.servicevendor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.servicevendor.vendorId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.createdAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.createdAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+    </dl>
+    
+    
+</div>

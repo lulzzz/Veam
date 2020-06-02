@@ -1,0 +1,48 @@
+﻿
+<div id="VendorLine-table"></div>
+
+
+<script>
+    var baseUrl = document.location.origin;
+    var apiEndpoint = "/Home/GetTabulatorData";
+    var entity = 'VendorLine';
+    var apiurl = '/api/' + entity;
+
+    //Build Tabulator
+    var table = new Tabulator("#VendorLine-table", {
+        height: "311px",
+        addRowPos: "bottom",
+        pagination: "remote",
+        ajaxURL:   apiurl + '?masterid=@Model.vendorId', /* baseUrl + apiEndpoint,*/
+        paginationSize: 10,
+        paginationSizeSelector: [10, 20, 30, 50],
+        ajaxFiltering: true,
+        ajaxSorting: true,
+        columns: [
+            { title: "contactFullName", field: "contactFullName", width: 200, editor: "input" },
+            { title: "mobilePhone", field: "mobilePhone", width: 100, align: "right", sorter: "number", editor: "input" },
+            { title: "jobTitle", field: "jobTitle", editor: "input" },
+           
+        ],
+    });
+
+    //Add row on "Add Row" button click
+    $("#add-row").click(function () {
+        table.addRow({});
+    });
+
+    //Delete row on "Delete Row" button click
+    $("#del-row").click(function () {
+        table.deleteRow(1);
+    });
+
+    //Clear table on "Empty the table" button click
+    $("#clear").click(function () {
+        table.clearData()
+    });
+
+    //Reset table contents on "Reset the table" button click
+    $("#reset").click(function () {
+        table.setData(tabledata);
+    });
+</script>

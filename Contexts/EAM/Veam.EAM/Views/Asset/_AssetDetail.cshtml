@@ -1,0 +1,45 @@
+﻿@model Veam.EAM.ViewModels.AssetQueryVM
+
+<table class="table table-bordered" style="width:100%">
+
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.assetName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.assetName)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.assetTag)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.assetTag)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.serialNo)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.serialNo)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.modelNo)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.modelNo)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.status)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.status)
+        </td>
+    </tr>
+</table>

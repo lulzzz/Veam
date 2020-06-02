@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <!--<TargetFramework>netstandard2.1</TargetFramework>-->
+       <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+  </PropertyGroup>
+
+  
+  <ItemGroup>
+    <EmbeddedResource Include="Views\**" />
+  </ItemGroup>
+
+  
+  <ItemGroup>
+    <EmbeddedResource Remove="Views\Shared\_HallList.cshtml" />
+  </ItemGroup>
+
+    
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CrossCutting\Barebone\Barebone.csproj" />
+    <ProjectReference Include="..\Veam.Center.Application\Veam.Centers.Application.csproj" />
+  </ItemGroup>
+  
+
+</Project>

@@ -1,0 +1,65 @@
+﻿@model Veam.EAM.ViewModels.CheckoutVM
+
+<div class="row">
+    <div class="col-md-12">
+        <div class=" row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="toLocation.subsideryId" class="control-label"></label>
+                    <select id="centerList" asp-for="toLocation.subsideryId" class="form-control select2" asp-items="@Model. subsideryList"></select>
+                    <span asp-validation-for="toLocation.subsideryId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="toLocation.managerId " class="control-label"></label>
+                    <select id="hallList" asp-for="toLocation.managerId" class="form-control select2" asp-items="@Model.EmpList  "></select>
+                    <span asp-validation-for="toLocation.managerId" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+        <div class=" row">
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="toLocation.centerId" class="control-label"></label>
+                    <select id="centerList" asp-for="toLocation.centerId" class="form-control select2" asp-items="@Model.CenterList"></select>
+                    <span asp-validation-for="toLocation.centerId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="toLocation.hallId " class="control-label"></label>
+                    <select id="hallList" asp-for="toLocation.hallId" class="form-control select2" asp-items="@Model.HallList"></select>
+                    <span asp-validation-for="toLocation.hallId" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+@using (Html.BeginScripts())
+{
+    <script>
+ 
+
+            function loadHallByCenter() {
+                 $('#centerList').change(function () {
+               var url = '@Url.Content("~/")' + "Select/GetHallbyCenterId";
+                 $.getJSON(url, { centerId: $("#centerList").val() }, function (data) {
+                var items = '';
+                $("#hallList").empty();
+                $.each(data, function (i, section) {
+                    items += "<option value='" + section.value + "'>" + section.text + "</option>";
+                });
+                     $('#hallList').html(items);
+                    });
+             });
+            };
+    </script>
+
+}
+

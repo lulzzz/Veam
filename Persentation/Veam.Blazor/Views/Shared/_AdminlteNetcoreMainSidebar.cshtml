@@ -1,0 +1,50 @@
+﻿@model Veam.Models.ApplicationUser
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject Veam.Data.ApplicationDbContext Context
+@{
+
+    ApplicationUser appUser = await UserManager.GetUserAsync(User);
+
+}
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+
+        <partial name="Menu/_UserPanel" , appUser />
+
+        @if (appUser != null)
+        {
+
+    <ul class="sidebar-menu" data-widget="tree">
+
+        <partial name="Menu/_Dashboard" , appUser />
+        @*@Html.Partial("_Eam", appUser)*@
+        <partial name="Menu/_Eam" , appUser />
+        <partial name="Menu/_Rent" , appUser />
+        <partial name="Menu/_Location" , appUser />
+        <partial name="Menu/_Purchase" , appUser /> 
+        <partial name="Menu/_Sales" , appUser />
+        <partial name="Menu/_Shipment" , appUser />
+        <partial name="Menu/_EamTest" , appUser />
+
+
+        <!-- /.Application role Assign, flow and menu -->
+        @if (appUser.ApplicationUserRole)
+        {
+            <li class="header">Users Roles</li>
+            <li class="@Html.IsSelected(controller: "ApplicationUser")">
+                <a href="@Url.Action("Index", "ApplicationUser")">
+                    <i class="fa fa-users"></i> <span>App Users Roles</span>
+                </a>
+            </li>
+        }
+    </ul>
+        }
+
+
+
+    </section>
+    <!-- /.sidebar -->
+</aside>

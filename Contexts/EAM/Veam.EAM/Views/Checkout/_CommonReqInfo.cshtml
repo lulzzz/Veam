@@ -1,0 +1,57 @@
+﻿@model Veam.EAM.ViewModels.CheckoutVM
+
+ 
+    <div class="row">
+        <div class="col-md-12"> 
+            <div class="row">
+                <div class=" col-md-4">
+                    <div class="form-group">
+                        <label asp-for=" checkedOutDate" class="control-label"></label>
+                        <DatePicker>
+                            <input asp-for="checkedOutDate" value="@DateTime.Today.ToString("MMM/dd/yyyy")" class="form-control pull-right datepicker" type="text" />
+                        </DatePicker>
+                        <span asp-validation-for="checkedOutDate" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class=" col-md-4">
+                    <div class="form-group">
+                        <label asp-for=" requestInfo.approveDate" class="control-label"></label>
+                        <DatePicker>
+                            <input asp-for="requestInfo.approveDate" class="form-control pull-right datepicker" type="text" />
+                        </DatePicker>
+                        <span asp-validation-for="requestInfo.approveDate" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class=" col-md-4">
+                    <div class="form-group">
+                        <label asp-for=" requestInfo.requestedDate" class="control-label"></label>
+                        <DatePicker>
+                            <input asp-for=" requestInfo.requestedDate" class="form-control pull-right datepicker" type="text" />
+                        </DatePicker>
+                        <span asp-validation-for=" requestInfo.requestedDate" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" row">
+                <div class=" col-md-6">
+                    <div class="form-group">
+                        <label asp-for=" requestInfo.requestedBy" class="control-label"></label>
+                        <select  asp-for=" requestInfo.requestedBy" class="form-control select2" asp-items="@Model.EmpList  "></select>
+                        <span asp-validation-for="requestInfo.requestedBy" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class=" col-md-6">
+                    <div class="form-group">
+                        <label asp-for=" requestInfo.approvedBy" class="control-label"></label>
+                        <select  asp-for=" requestInfo.approvedBy" class="form-control select2" asp-items="@Model.EmpList  "></select>
+                        <span asp-validation-for="requestInfo.approvedBy" class="text-danger"></span>
+                    </div>
+                </div>
+            </div> 
+        </div> 
+    </div>
+     

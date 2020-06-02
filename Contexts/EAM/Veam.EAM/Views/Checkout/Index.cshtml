@@ -1,0 +1,150 @@
+﻿@model Veam.EAM.ViewModels.CheckoutVM
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
+}
+
+
+<div class="box box-primary">
+    <div class="col-md-12">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="checkoutId" />
+        <input type="hidden" asp-for="assetId" />
+        <partial name="_CommonReqInfo" />
+        <partial name="_AssignInfo" />
+        <!-- Custom Tabs (Pulled to the right) -->
+        <div class="nav-tabs-custom ">
+            <ul class="nav nav-tabs pull-right ">
+                <li><a href="#toParent" data-toggle="tab">To Parent Asset</a></li>
+                <li class="active"><a class="btn btn-default" href="#toLocation" data-toggle="tab"> Tolocation</a></li>
+                <li><a href="#toEmp" data-toggle="tab">ToEmployee</a></li>
+                <li class="pull-left header"><i class="fa fa-th"></i>CheckOut To</li>
+            </ul>
+
+            <div class="tab-content fixed">
+                <!--To Location-->
+                <div class="tab-pane active" id="toLocation">
+                    <div class="row " id="locationBox1">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="toLocation.centerId" class="control-label"></label>
+                                <select id="centerList" onchange="loadHallByCenter()" asp-for="toLocation.centerId" class="form-control select2" asp-items="@Model.CenterList"></select>
+                                <span asp-validation-for="toLocation.centerId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="toLocation.hallId " class="control-label"></label>
+                                <select id="hallList" asp-for="toLocation.hallId" class="form-control select2" asp-items="@Model.HallList"></select>
+                                <span asp-validation-for="toLocation.hallId" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class=" row" id="locationBox2">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="toLocation.subsideryId" class="control-label"></label>
+                                <select asp-for="toLocation.subsideryId" class="form-control select2" asp-items="@Model. subsideryList"></select>
+                                <span asp-validation-for="toLocation.subsideryId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="toLocation.managerId " class="control-label"></label>
+                                <select asp-for="toLocation.managerId" class="form-control select2" asp-items="@Model.EmpList  "></select>
+                                <span asp-validation-for="toLocation.managerId" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+                <!--To Employee-->
+                <div class="tab-pane " id="toEmp">
+                    <div class="user box row" id="userBox">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="toEmp.subsideryId" class="control-label"></label>
+                                <select asp-for="toEmp.subsideryId" class="form-control select2" asp-items="@Model. subsideryList"></select>
+                                <span asp-validation-for="toEmp.subsideryId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="toEmp.employeeId " class="control-label"></label>
+                                <select asp-for="toEmp.employeeId" class="form-control select2" asp-items="@Model.EmpList  "></select>
+                                <span asp-validation-for="toEmp.employeeId" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="toEmp.departmentId " class="control-label"></label>
+                                <select asp-for="toEmp.departmentId" class="form-control select2" asp-items="@Model.deptList  "></select>
+                                <span asp-validation-for="toEmp.departmentId" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--To ParentAsset-->
+                <div class="tab-pane " id="toParent">
+                    <div class="asset box row" id="assetBox">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="ToParent.parentAssetId" class="control-label"></label>
+                                <select asp-for="ToParent.parentAssetId" class="form-control" asp-items="@Model.pasrntAssetList "></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+@section Styles{
+
+
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/adminlte/plugins/iCheck/all.css" />
+
+}
+
+@section Scripts {
+
+    <!-- iCheck -->
+    <script src="~/adminlte/plugins/iCheck/icheck.min.js"></script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+ 
+
+   
+    <script> 
+        function loadHallByCenter( ) {
+
+             $('#centerList').change(function () {
+           var url = '@Url.Content("~/")' + "Select/GetHallbyCenterId";
+             $.getJSON(url, { centerId: $("#centerList").val() }, function (data) {
+            var items = '';
+            $("#hallList").empty();
+            $.each(data, function (i, section) {
+                items += "<option value='" + section.value + "'>" + section.text + "</option>";
+            });
+                 $('#hallList').html(items);
+                });
+         });
+        };
+
+    </script>
+}

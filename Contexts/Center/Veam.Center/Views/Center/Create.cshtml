@@ -1,0 +1,107 @@
+﻿@model Veam.Centers.ViewModels.CenterSaveVm
+
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminlteNetcoreCreate.cshtml";
+    ViewData["EntityIcon"] = "fa fa-building-o";
+    ViewData["CreateInfo"] = "";
+}
+
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="CenterId" />
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="CenterName" class="control-label"></label>
+                    <input asp-for="CenterName" class="form-control" />
+                    <span asp-validation-for="CenterName" class="text-danger"></span>
+                </div>
+            </div>
+           
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="isHO" class="control-label"></label>
+                    <div class="checkbox">
+                        <input asp-for="isHO" /> &nbsp; Yes.
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    <label asp-for="CenterTypeId" class="control-label"></label>
+                    <select asp-for="CenterTypeId" class="form-control select2" asp-items="@ViewBag.Typelist"></select>
+                    <span asp-validation-for="CenterTypeId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="SubsideryId" class="control-label"></label>
+                    <select asp-for="SubsideryId" class="form-control select2" asp-items="@ViewBag.Subsiderylist"></select>
+                    <span asp-validation-for="SubsideryId" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+         
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="buildingId" class="control-label"></label>
+                        <select asp-for="buildingId" class="form-control select2" asp-items="@ViewBag.BuildingList"></select>
+                        @*<div mvc-lookup-for="assetModelId" url="~/Lookup/modelLookup" title="Asset Models" rows="10"></div>*@
+                        @*<div mvc-lookup-for="buildingId" url="~/Lookup/BuildingLookup" title="Location" rows="15" ></div>*@
+                        <span asp-validation-for="buildingId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="description" class="control-label"></label>
+                        <input asp-for="description" class="form-control" />
+                        <span asp-validation-for="description" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+         
+    </div>
+
+</div>
+
+@section Styles{
+
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/adminlte/plugins/iCheck/all.css" />
+
+}
+
+@section Scripts {
+
+    <!-- iCheck -->
+    <script src="~/adminlte/plugins/iCheck/icheck.min.js"></script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' /* optional */
+            });
+        });</script>
+
+
+}
+@*<select asp-for="buildingId" class="form-control select2" asp-items="@ViewBag.buildingId"></select>*@
+@*<select asp-for="buildingId" asp-items="Model.buildingSelectList" class="form-control select2">
+        <option value="">Select building</option>
+    </select>*@

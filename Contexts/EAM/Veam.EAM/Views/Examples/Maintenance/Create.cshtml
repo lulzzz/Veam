@@ -1,0 +1,136 @@
+﻿@model Veam.EAM.Domain.AssetMaintenance
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminlteNetcoreCreate.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssetMaintanceType" class="control-label"></label>
+                <input asp-for="AssetMaintanceType" class="form-control" />
+                <span asp-validation-for="AssetMaintanceType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="isInWarranty" /> @Html.DisplayNameFor(model => model.isInWarranty)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompletionDate" class="control-label"></label>
+                <input asp-for="CompletionDate" class="form-control" />
+                <span asp-validation-for="CompletionDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="assetMaintanceTime" class="control-label"></label>
+                <input asp-for="assetMaintanceTime" class="form-control" />
+                <span asp-validation-for="assetMaintanceTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="discription" class="control-label"></label>
+                <input asp-for="discription" class="form-control" />
+                <span asp-validation-for="discription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PurchaseOrderNo" class="control-label"></label>
+                <input asp-for="PurchaseOrderNo" class="form-control" />
+                <span asp-validation-for="PurchaseOrderNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="billedDate" class="control-label"></label>
+                <input asp-for="billedDate" class="form-control" />
+                <span asp-validation-for="billedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="billedCost" class="control-label"></label>
+                <input asp-for="billedCost" class="form-control" />
+                <span asp-validation-for="billedCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="billCopy" class="control-label"></label>
+                <input asp-for="billCopy" class="form-control" />
+                <span asp-validation-for="billCopy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WarrantyMonths" class="control-label"></label>
+                <input asp-for="WarrantyMonths" class="form-control" />
+                <span asp-validation-for="WarrantyMonths" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="warrantyStartDate" class="control-label"></label>
+                <input asp-for="warrantyStartDate" class="form-control" />
+                <span asp-validation-for="warrantyStartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="warrantyEndDate" class="control-label"></label>
+                <input asp-for="warrantyEndDate" class="form-control" />
+                <span asp-validation-for="warrantyEndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="warrantyBy" class="control-label"></label>
+                <input asp-for="warrantyBy" class="form-control" />
+                <span asp-validation-for="warrantyBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssetId" class="control-label"></label>
+                <select asp-for="AssetId" class="form-control" asp-items="ViewBag.AssetId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="servicevendorId" class="control-label"></label>
+                <select asp-for="servicevendorId" class="form-control" asp-items="ViewBag.servicevendorId"></select>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Styles{
+
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/adminlte/plugins/iCheck/all.css" />
+
+}
+
+@section Scripts {
+
+    <!-- iCheck -->
+    <script src="~/adminlte/plugins/iCheck/icheck.min.js"></script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+    $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' /* optional */
+            });
+        });</script>
+
+
+}

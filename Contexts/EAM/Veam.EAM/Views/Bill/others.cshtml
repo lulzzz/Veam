@@ -1,0 +1,261 @@
+﻿@*var BillItems = [];
+                            //Add button click function
+                            $('#add').click(function () {
+                                //Check validation of order item
+                                var isValidItem = true;
+
+
+                                //Add item to list if valid
+                                if (isValidItem) {
+                                    BillItems.push({
+                                        assetId: $('#assetList').val(),
+                                    });
+
+                                    //Clear fields
+                                    //$('#centerList').val('0');
+                                    //$('#hallList,#assetList').val('0');
+
+                                }
+                                //populate order items
+                                GeneratedItemsTable();
+
+                            });
+                            //Save button click function
+                            $('#submit').click(function () {
+                                //validation of order
+                                var isAllValid = true;
+                                //if (BillItems.length == 0) {
+                                //    $('#BillItems').html('<span style="color:red;">Please add order items</span>');
+                                //    isAllValid = false;
+                                //}
+
+                                //Save if valid
+                                if (isAllValid) {
+                                    var data = {
+                                        billNo: $('#BillNo').val(),
+                                       billDate: $('#BillDateDate').val(),
+                                        //Sorry forgot to add Description Field
+                                        notes : $('#Notes').val(),
+                                        Assets : BillItems
+                                    }
+
+                                    $(this).val('Please wait...');
+
+                                    $.ajax({
+                                        url: '/AssetPurchase/Create',
+                                        type: "POST",
+                                        data: JSON.stringify(data),
+                                       // dataType: "JSON",
+                                        contentType: "application/json",
+                                        success: function (d) {
+                                            //check is successfully save to database
+                                            if (d.status == true) {
+                                                //will send status from server side
+                                                alert('Successfully done.');
+                                                //clear form
+                                                BillItems = [];
+                                                $('#BillNo').val('');
+                                                $('#BillDate').val('');
+                                                $('#BillItems').empty();
+                                            }
+                                            else {
+                                                alert('Failed');
+                                            }
+                                            $('#submit').val('Save');
+                                        },
+                                        error: function () {
+                                            alert('Error. Please try again.');
+                                            $('#submit').val('Save');
+                                        }
+                                    });
+                                }
+
+                            });
+                            //function for show added items in table
+                            function GeneratedItemsTable() {
+                                if (BillItems.length > 0) {
+                                    var $table = $('
+    <table />');
+                                    $table.append('<thead><tr><th>Item</th><th>Quantity</th><th>Rate</th><th>Total</th></tr></thead>');
+                                    var $tbody = $('
+    <tbody />');
+                                    $.each(BillItems, function (i, val) {
+                                        var $row = $('
+    <tr />');
+                                        $row.append($('
+    <td />').html(val.assetId));
+                                        $row.append($('
+    <td />').html(val.centerId));
+                                        $row.append($('
+    <td />').html(val.hallid));
+                                        $row.append($('
+    <td />').html(val.TotalAmount));
+                                        $tbody.append($row);
+                                    });
+                                    $table.append($tbody);
+                                    $('#BillItems').html($table);
+                                }
+                            }*@
+
+<div class="row">
+    <div class="col">
+        <div id="VendorLine-table" class="table table-bordered table-hover"></div>
+    </div>
+</div>
+
+
+@section Scripts{
+
+
+    <script>
+            var baseUrl = document.location.origin;
+            var apiEndpoint = "/Home/GetTabulatorData";
+            var entity = 'VendorLine';
+            var apiurl = '/api/' + entity;
+
+            //Build Tabulator
+            var table = new Tabulator("#VendorLine-table", {
+                 layout:"fitColumns",
+                height: "150px",
+                addRowPos: "top",
+                pagination: "remote",
+                ajaxURL:   apiurl + '?masterid=@Model.vendorId', /* baseUrl + apiEndpoint,*/
+                paginationSize: 10,
+                paginationSizeSelector: [10, 20, 30, 50],
+                ajaxFiltering: true,
+                ajaxSorting: true,
+                columns: [
+                    { title: "contactFullName", field: "contactFullName", width: 200, editor: "input" },
+                    { title: "mobilePhone", field: "mobilePhone", width: 100, align: "right", sorter: "number", editor: "input" },
+                    { title: "jobTitle", field: "jobTitle", editor: "input" },
+                    { title: "", field: "jobTitle", editor: "input" },
+
+                     {title:"Actions", sortable:false, align:"center", formatter:function (cell) {
+                var galId = cell.getData();
+                var galTitle = cell.getData().contactFullName;
+                var username = cell.getData().mobilePhone;
+                var gallerytype = cell.getData().jobTitle;
+                var newEditRow = "<div class='btn-group' role='group' aria-label='Perform Actions'>" +
+                "<button type='button' name='preview' class='btn btn-success btn-sm' onclick='ShowPopup(this)' " +
+                " data-editid='"+galId+"' " +
+                ">" +
+                "<span>" +
+                "<i class='fa fa-eye'>" +
+                "</i>" +
+                "</span>" +
+                "</button>" +
+                "<button type='button' name='Edit'  class='btn btn-primary btn-sm' onclick='editGalleryById(this)' " +
+                " data-editid='"+galId+"' " +
+                " data-title='"+galTitle+"' " +
+                " data-active='"+active+"' " +
+                " data-featured='"+featured+"' " +
+                " data-created='"+created+"' " +
+                " data-lastupdated='"+lastUpdated+"' " +
+                " data-username='"+username+"' " +
+                " data-gallerytype='"+gallerytype+"' " +
+                ">" +
+                "<span>" +
+                "<i class='fa fa-edit'>" +
+                "</i>" +
+                "</span>" +
+                "</button>" +
+                "<button type='button' name='Delete' data-delid='"+galId+"'  class='btn btn-danger btn-sm' onclick='deleteGalleryById(this)' " +
+                ">" +
+                "<span>" +
+                "<i class='fa fa-trash'>" +
+                "</i>" +
+                "</span>" +
+                "</button>" +
+                "</div>"
+
+                          return newEditRow;
+
+                      }}
+                ]
+            });
+
+            //Add row on "Add Row" button click
+            $("#add-row").click(function () {
+                table.addRow({});
+            });
+
+            //Delete row on "Delete Row" button click
+            $("#del-row").click(function () {
+                table.deleteRow(1);
+            });
+
+            //Clear table on "Empty the table" button click
+            $("#clear").click(function () {
+                table.clearData()
+            });
+
+            //Reset table contents on "Reset the table" button click
+            $("#reset").click(function () {
+                table.setData(tabledata);
+            });
+    </script>
+}
+
+
+
+
+@*<div class="row">
+        <div class="col">
+            <div class="table-responsive-sm">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td style="width:15%">
+                                <select id="filter-field" class="form-control form-control-sm">
+                                    <option value="" disabled selected>Filter Results By</option>
+                                    <option value="galleryId">Id</option>
+                                    <option value="title">Title</option>
+                                    <option value="isActive">Active</option>
+                                    <option value="isFeatured">Featured</option>
+                                    <option value="timeCreated">Created</option>
+                                    <option value="lastUpdated">Update</option>
+                                    <option value="userId">Username</option>
+                                </select>
+                            </td>
+                            <td style="width:5%">
+                                <select id="filter-type" class="form-control form-control-sm">
+                                    <option value="=">=</option>
+                                    <option value="<">&lt;</option>
+                                    <option value="<=">&lt;=</option>
+                                    <option value=">">&gt;</option>
+                                    <option value=">=">&gt;=</option>
+                                    <option value="!=">!=</option>
+                                    <option value="like">like</option>
+                                </select>
+                            </td>
+                            <td style="width:15%"><input class="form-control form-control-sm" id="filter-value" type="text" placeholder="value to filter"></td>
+                            <td style="width:15%"><button class="btn btn-primary btn-sm" style="width:100%" id="filter-clear"><i class="fas fa-eraser"></i> Clear Filter</button></td>
+                            <td style="width:15%"><button class="btn btn-primary btn-sm" style="width:100%" onclick="viewgallery()"><i class="fa fa-eye"></i> Reload Galleries</button></td>
+                            <td style="width:15%"><button class="btn btn-warning btn-sm" style="width:100%" onclick="savechanges()"><i class="fas fa-save"></i> Save Changes</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>*@
+
+
+@*////select row on "select" button click
+        //$("#select-row").click(function () {
+        //    table.selectRow(1);
+        //});
+
+        ////deselect row on "deselect" button click
+        //$("#deselect-row").click(function () {
+        //    table.deselectRow(1);
+        //});
+
+        ////select row on "select all" button click
+        //$("#select-all").click(function () {
+        //    table.selectRow();
+        //});
+
+        ////deselect row on "deselect all" button click
+        //$("#deselect-all").click(function () {
+        //    table.deselectRow();
+        //});*@

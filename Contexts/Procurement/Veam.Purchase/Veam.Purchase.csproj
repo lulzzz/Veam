@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Views\**" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\netcore.WebInfra\netcore.WebInfra.csproj" />
+    <ProjectReference Include="..\Veam.Purchase.Domain\Veam.Purchase.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,110 @@
+﻿@model Veam.CenterRent.ViewModels.BuildingSaveVM
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminlteNetcoreEdit.cshtml";
+    ViewData["EntityIcon"] = "fa fa-building-o";
+}
+
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="buildingId" />
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="buildingName" class="control-label"></label>
+                    <input asp-for="buildingName" class="form-control" />
+                    <span asp-validation-for="buildingName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="buildingNo" class="control-label"></label>
+                    <input asp-for="buildingNo" class="form-control" />
+                    <span asp-validation-for="buildingNo" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+      
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="address.Line1" class="control-label"></label>
+                    <input asp-for="address.Line1" class="form-control" />
+                    <span asp-validation-for="address.Line1" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="address.Line2" class="control-label"></label>
+                    <input asp-for="address.Line2" class="form-control" />
+                    <span asp-validation-for="address.Line2" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="address.City" class="control-label"></label>
+                    <input asp-for="address.City" class="form-control" />
+                    <span asp-validation-for="address.City" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="address.State" class="control-label"></label>
+                    <input asp-for="address.State" class="form-control" />
+                    <span asp-validation-for="address.State" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="address.Zip" class="control-label"></label>
+                    <input asp-for="address.Zip" class="form-control" />
+                    <span asp-validation-for="address.Zip" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+@section Styles{
+
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/adminlte/plugins/iCheck/all.css" />
+
+}
+
+
+
+
+
+@section Scripts {
+    <!-- iCheck -->
+    <script src="~/adminlte/plugins/iCheck/icheck.min.js"></script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' /* optional */
+            });
+        });
+    </script>
+
+}
+
+
+

@@ -1,0 +1,60 @@
+﻿@model Veam.Models.ApplicationUser
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject Veam.Data.ApplicationDbContext Context
+@{
+    ApplicationUser appUser = await UserManager.GetUserAsync(User);
+
+}
+
+@*<li class="header">Purchase </li>*@
+<li class="@Html.IsSelected(actions: "Asset") treeview">
+    <a href="#">
+        <i class="fa fa-dashboard"></i> <span>Purchase</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+
+    <ul class="treeview-menu">
+        @if (appUser.HomeRole)
+        {
+
+            <li class="@Html.IsSelected(controller: "Product")">
+                <a href="@Url.Action("Index", "Product")">
+                    <i class="fa fa-tags"></i> <span>Products</span>
+                </a>
+            </li>
+        }
+
+
+
+        @if (appUser.HomeRole)
+        {
+            <li class="@Html.IsSelected(controller: "Vendor")">
+                <a href="@Url.Action("Index", "Vendor")">
+                    <i class="fa fa-industry"></i> <span>Supplier</span>
+                </a>
+            </li>
+        }
+
+        @if (appUser.HomeRole)
+        {
+            <li class="@Html.IsSelected(controller: "PurchaseOrder")">
+                <a href="@Url.Action("Index", "PurchaseOrder")">
+                    <i class="fa fa-file-text"></i> <span>Purchase Order</span>
+                </a>
+            </li>
+        }
+
+        @if (appUser.HomeRole)
+        {
+            <li class="@Html.IsSelected(controller: "Receiving")">
+                <a href="@Url.Action("Index", "Receiving")">
+                    <i class="fa fa-truck"></i> <span>Receivings</span>
+                </a>
+            </li>
+        }
+
+    </ul>
+</li>

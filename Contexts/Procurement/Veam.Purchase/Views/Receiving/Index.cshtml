@@ -1,0 +1,85 @@
+﻿@model IEnumerable<netcore.Models.Invent.Receiving>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminlteNetcoreIndex.cshtml";
+    ViewData["EntityIcon"] = "fa fa-truck";
+    ViewData["ListTitle"] = "List Of GRN";
+    ViewData["IndexInfo"] = "Receiving is a process of receiving goods from supplier. " +
+                "After checking and confirming with PO, the Receiving team will issue internal documents called Goods Receiving Notes (GSRN).";
+}
+
+
+<table class="table table-hover table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>   
+            <a asp-action="Create" class="btn bg-olive-active btn-sm "><i class="fa fa-plus margin-r-5"></i><span>Add New</span></a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.receivingNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.receivingDate)
+            </th>
+            <th class="hidden">
+                @Html.DisplayNameFor(model => model.vendorDO)
+            </th>
+            <th class="hidden">
+                @Html.DisplayNameFor(model => model.vendorInvoice)
+            </th>
+            <th class="hidden">
+                @Html.DisplayNameFor(model => model.branch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.purchaseOrder)
+            </th>
+            <th class="hidden">
+                @Html.DisplayNameFor(model => model.vendor)
+            </th>
+            <th class="hidden">
+                @Html.DisplayNameFor(model => model.warehouse)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <div class="tools">
+                        <a asp-action="Details" asp-route-id="@item.receivingId" class="btn btn-primary btn-xs"><i class="fa fa-list"></i></a>
+                        <a asp-action="Delete" asp-route-id="@item.receivingId" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                    </div>
+                   
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.receivingNumber)
+                </td>
+                <td>
+                    @item.receivingDate.ToString("dd-MMM-yyyy")
+                </td>
+                <td class="hidden">
+                    @Html.DisplayFor(modelItem => item.vendorDO)
+                </td>
+                <td class="hidden">
+                    @Html.DisplayFor(modelItem => item.vendorInvoice)
+                </td>
+                <td class="hidden">
+                    @Html.DisplayFor(modelItem => item.branch.branchId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.purchaseOrder.purchaseOrderNumber)
+                </td>
+                <td class="hidden">
+                    @Html.DisplayFor(modelItem => item.vendor.vendorId)
+                </td>
+                <td class="hidden">
+                    @Html.DisplayFor(modelItem => item.warehouse.warehouseId)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Veam.Centers.ViewModels.CenterQueryVm>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminlteNetcoreIndex.cshtml";
+    ViewData["EntityIcon"] = "fa fa-bank";
+    ViewData["ListTitle"] = "List Of Centers";
+    ViewData["IndexInfo"] = "Centers are our existing Permises";
+}
+
+
+<table class="table table-hover table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Create" class="btn bg-olive-active btn-sm "><i class="fa fa-plus margin-r-5"></i><span>Add New</span></a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CenterName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.buildingNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CenterType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subsidery)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Addressfull)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <div class="tools">
+                        <a asp-action="Edit" asp-route-id="@item.CenterId" class="btn btn-primary btn-xs "><i class="fa fa-pencil"></i></a>
+                        <a asp-action="Details" asp-route-id="@item.CenterId" class="btn bg-purple-active btn-xs"><i class="fa fa-list"></i></a>
+                        <a asp-action="Delete" asp-route-id="@item.CenterId" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                    </div>
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CenterName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.buildingNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CenterType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subsidery)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Addressfull)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

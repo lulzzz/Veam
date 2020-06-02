@@ -1,0 +1,55 @@
+﻿@model Veam.EAM.ViewModels.AssetPurchaseSaveVM
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminlteNetcoreEdit.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>AssetPurchase</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="assetpurchaseId" />
+            <div class="form-group">
+                <label asp-for="billNo" class="control-label"></label>
+                <input asp-for="billNo" class="form-control" />
+                <span asp-validation-for="billNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="billedDate" class="control-label"></label>
+                <input asp-for="billedDate" class="form-control" />
+                <span asp-validation-for="billedDate" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="vendorId" class="control-label"></label>
+                <select asp-for="vendorId" class="form-control" asp-items="ViewBag.vendorId"></select>
+                <span asp-validation-for="vendorId" class="text-danger"></span>
+            </div>
+            
+           
+            <div class="form-group">
+                <label asp-for="notes" class="control-label"></label>
+                <input asp-for="notes" class="form-control" />
+                <span asp-validation-for="notes" class="text-danger"></span>
+            </div>
+          
+            @*<div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="depreciate" /> @Html.DisplayNameFor(model => model.depreciate)
+                    </label>
+                </div>
+            </div>*@
+           
+        </form>
+    </div>
+</div>
+ 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

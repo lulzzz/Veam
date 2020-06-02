@@ -1,0 +1,76 @@
+//{
+//  "data": [
+//    {
+//      "assetId": 1,
+//      "assetName": "fchuft",
+//      "assetTag": "ad-ds-uyg-",
+//      "serialNo": "jhvhlg",
+//      "qrcode": null,
+//      "modalname": null,
+//      "modelNo": "uygu",
+//      "brand": null,
+//      "product": null,
+//      "status": "InStock"
+//    },
+//    {
+//      "assetId": 2,
+//      "assetName": "fdz",
+//      "assetTag": "Wi-fd-fdd-",
+//      "serialNo": "dfa",
+//      "qrcode": null,
+//      "modalname": null,
+//      "modelNo": "fdddddddddda",
+//      "brand": null,
+//      "product": null,
+//      "status": "InStock"
+//    }
+//  ]
+//}
+
+//{
+//  "result": "OK",
+//  "records": [
+//    {
+//      "assetId": 1,
+//      "assetName": "fchuft",
+//      "assetTag": "ad-ds-uyg-",
+//      "serialNo": "jhvhlg",
+//      "qrcode": null,
+//      "modalname": null,
+//      "modelNo": "uygu",
+//      "brand": null,
+//      "product": null,
+//      "status": "InStock"
+//    },
+//    {
+//      "assetId": 2,
+//      "assetName": "fdz",
+//      "assetTag": "Wi-fd-fdd-",
+//      "serialNo": "dfa",
+//      "qrcode": null,
+//      "modalname": null,
+//      "modelNo": "fdddddddddda",
+//      "brand": null,
+//      "product": null,
+//      "status": "InStock"
+//    }
+//  ]
+//}
+
+//{
+//  "checkoutId": "0",
+//  "assetId": "7",
+//  "checkedOutDate": "Mar/05/2020",
+//  "approveDate": "03/11/2020",
+//  "requestedDate": "03/17/2020",
+//  "assetConditon": "",
+//  "conditionNote": "",
+//  "centerId": "10",
+//  "hallId": "4"
+//}
+
+{
+  "billNo": "jhn",
+  "notes": "hghng",
+  "Assets": [ { "assetId": 8 } ]
+}

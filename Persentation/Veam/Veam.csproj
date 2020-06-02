@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!--<TargetFramework>netstandard2.1</TargetFramework>-->
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    
+  </PropertyGroup>
+  
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\Contexts\Base\Veam.Base\Veam.Base.csproj" />
+    <ProjectReference Include="..\..\Contexts\Center\Veam.Center\Veam.Centers.csproj" />
+    <ProjectReference Include="..\..\Contexts\EAM\Veam.EAM.Data\Veam.EAM.Data.csproj" />
+    <ProjectReference Include="..\..\Contexts\EAM\Veam.EAM\Veam.EAM.csproj" />
+    <!--<ProjectReference Include="..\..\Contexts\EMS\Veam.EMS\Veam.EMS.csproj" />-->
+    <ProjectReference Include="..\..\Contexts\RentAgreement\Veam.CenterRent\Veam.CenterRent.csproj" />
+    <ProjectReference Include="..\..\Infra\Veam.Infra.Data\Veam.Infra.Data.csproj" />
+    <ProjectReference Include="..\..\Infra\Veam.Infra.Emails\Veam.Infra.Emails.csproj" />
+    <ProjectReference Include="..\..\Infra\Veam.Infra.Files\Veam.Infra.Files.csproj" />
+    <ProjectReference Include="..\..\Infra\Veam.Infra.Identity\Veam.Infra.Identity.csproj" />
+   
+  </ItemGroup>
+
+ 
+
+</Project>

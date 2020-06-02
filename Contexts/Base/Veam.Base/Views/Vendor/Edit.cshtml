@@ -1,0 +1,132 @@
+﻿@model Veam.Base.ViewModels.VendorSaveVM
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminlteNetcoreEdit.cshtml";
+    ViewData["EntityIcon"] = "fa fa-industry";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="vendorId" />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="RegisterCompanyName" class="control-label"></label>
+                    <input asp-for="RegisterCompanyName" class="form-control" />
+                    <span asp-validation-for="RegisterCompanyName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="GstNo" class="control-label"></label>
+                    <input asp-for="GstNo" class="form-control" />
+                    <span asp-validation-for="GstNo" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="description" class="control-label"></label>
+            <input asp-for="description" class="form-control" />
+            <span asp-validation-for="description" class="text-danger"></span>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="mobilePhone" class="control-label"></label>
+                    <input asp-for="mobilePhone" class="form-control" />
+                    <span asp-validation-for="mobilePhone" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="officePhone" class="control-label"></label>
+                    <input asp-for="officePhone" class="form-control" />
+                    <span asp-validation-for="officePhone" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="personalEmail" class="control-label"></label>
+                    <input asp-for="personalEmail" class="form-control" />
+                    <span asp-validation-for="personalEmail" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="workEmail" class="control-label"></label>
+                    <input asp-for="workEmail" class="form-control" />
+                    <span asp-validation-for="workEmail" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="line1" class="control-label"></label>
+                    <input asp-for="line1" class="form-control" />
+                    <span asp-validation-for="line1" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="line2" class="control-label"></label>
+                    <input asp-for="line2" class="form-control" />
+                    <span asp-validation-for="line2" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="city" class="control-label"></label>
+                    <input asp-for="city" class="form-control" />
+                    <span asp-validation-for="city" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="state" class="control-label"></label>
+                    <input asp-for="state" class="form-control" />
+                    <span asp-validation-for="state" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="zip" class="control-label"></label>
+                    <input asp-for="zip" class="form-control" />
+                    <span asp-validation-for="zip" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="country" class="control-label"></label>
+                    <input asp-for="country" class="form-control" />
+                    <span asp-validation-for="country" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+

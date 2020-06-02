@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+   
+    <TargetFramework>netstandard2.1</TargetFramework>
+   
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dropbox.Api" Version="4.9.4" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Veam.FileStorage.Abstractions\Veam.FileStorage.Abstractions.csproj" />
+  </ItemGroup>
+
+ 
+</Project>

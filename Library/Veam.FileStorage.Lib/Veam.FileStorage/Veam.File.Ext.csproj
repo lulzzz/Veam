@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Veam.FileStorage.Abstractions\Veam.FileStorage.Abstractions.csproj" />
+    <ProjectReference Include="..\Veam.FileStorage.Dropbox\Veam.FileStorage.Dropbox.csproj" />
+    <ProjectReference Include="..\Veam.FileStorage.FileSystem\Veam.FileStorage.FileSystem.csproj" />
+  </ItemGroup>
+
+  
+
+</Project>

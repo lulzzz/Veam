@@ -1,0 +1,45 @@
+﻿@model Veam.Models.ApplicationUser
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject Veam.Data.ApplicationDbContext Context
+@{
+    ApplicationUser appUser = await UserManager.GetUserAsync(User);
+
+}
+
+@*<li class="header">Sales </li>*@
+<li class="@Html.IsSelected(actions: "Customer") treeview">
+    <a href="#">
+        <i class="fa fa-dashboard"></i> <span>Sales Shipment</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
+
+        @if (appUser.HomeRole)
+        {
+
+            <li class="@Html.IsSelected(controller: "Customer")">
+                <a href="@Url.Action("Index", "Customer")">
+                    <i class="fa fa-bank"></i> <span>Customer</span>
+                </a>
+            </li>
+        }
+
+
+
+
+        @if (appUser.HomeRole)
+        {
+            <li class="@Html.IsSelected(controller: "SalesOrder")">
+                <a href="@Url.Action("Index", "SalesOrder")">
+                    <i class="fa fa-cart-plus"></i> <span>Sales Order</span>
+                </a>
+            </li>
+        }
+
+       
+
+    </ul>
+</li>

@@ -1,0 +1,160 @@
+﻿
+@model Veam.Models.ApplicationUser
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject Veam.Data.ApplicationDbContext Context
+@{
+    ApplicationUser appUser = await UserManager.GetUserAsync(User);
+
+}
+
+
+@if (appUser.HomeRole)
+{
+    @*<li class="header">EAM </li>*@ <!--sytem process-->
+    <li class="@Html.IsSelected(actions: "Asset") treeview">
+        <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Assets</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="@Html.IsSelected(controller: "Asset")">
+                <a href="@Url.Action("Create", "Asset")">
+                    <i class="fa  fa-plus-circle"></i> <span>Add An Asset</span>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "Asset")">
+                <a href="@Url.Action("Index", "Asset")">
+                    <i class="fa fa-bars"></i> <span>List Of Assets</span>
+                </a>
+            </li>
+
+            <li class="@Html.IsSelected(controller: "Bill")">
+                <a href="@Url.Action("Create", "Bill")">
+                    <i class="fa  fa-plus-circle"></i> <span>AddBill</span>
+                </a>
+            </li>
+
+            <li class="@Html.IsSelected(controller: "Maintenance")">
+                <a href="@Url.Action("Index", "Maintenance")">
+                    <i class="fa  fa-truck"></i> <span>Move</span>
+                </a>
+            </li>
+
+            <li class="@Html.IsSelected(controller: "Maintenance")">
+                <a href="@Url.Action("Index", "Maintenance")">
+                    <i class="fa  fa-trash-o"></i> <span>Dispose</span>
+                </a>
+            </li>
+
+            <li class="@Html.IsSelected(controller: "Maintenance")">
+                <a href="@Url.Action("Index", "Maintenance")">
+                    <i class="fa fa-tags"></i> <span>Maintenance</span>
+                </a>
+            </li>
+
+            <li class="@Html.IsSelected(controller: "FileUploads")">
+                <a href="@Url.Action("Index", "FileUploads")">
+                    <i class="fa fa-tags"></i> <span>FileUploads</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+
+
+
+    <!--CheckOut process-->
+    <li class="@Html.IsSelected(actions: "Asset") treeview">
+        <a href="#">
+            <i class="fa fa-dashboard"></i> <span>CheckOuts</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="@Html.IsSelected(controller: "CheckOut")">
+                <a href="@Url.Action("Index", "CheckOut")">
+                    <i class="fa fa-user-plus"></i> <span>CheckOut</span>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "CheckOut")">
+                <a href="@Url.Action("Index", "CheckOut")">
+                    <i class="fa fa-user-plus"></i> <span>Bulk CheckOut</span>
+                </a>
+            </li>
+
+            <li class="@Html.IsSelected(controller: "CheckOut")">
+                <a href="@Url.Action("CheckIn", "CheckOut")">
+                    <i class="fa fa-user-plus"></i> <span>CheckIn</span>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "CheckOut")">
+                <a href="@Url.Action("CheckIn", "CheckOut")">
+                    <i class="fa fa-user-plus"></i> <span>Bulk CheckIn</span>
+                </a>
+            </li>
+
+
+
+        </ul>
+    </li>
+
+    <!--Reports process-->
+    <li class="@Html.IsSelected(actions: "Asset") treeview">
+        <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Reports</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="@Html.IsSelected(controller: "Asset")">
+                <a href="@Url.Action("PrintQRs", "Asset")">
+                    <i class="fa  fa-plus-circle"></i> <span>GenerateQr</span>
+                </a>
+            </li>
+
+        </ul>
+    </li>
+
+    <!--Bulk process-->
+
+    <li class="@Html.IsSelected(actions: "Asset") treeview">
+        <a href="#">
+            <i class="fa fa-dashboard"></i> <span>BulK Add sysBypasss</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="@Html.IsSelected(controller: "Asset")">
+                <a href="@Url.Action("AddToCenter", "Asset")">
+                    <i class="fa  fa-plus-circle"></i> <span>BulK Asset to Center</span>
+                </a>
+            </li>
+
+            <li class="@Html.IsSelected(controller: "Asset")">
+                <a href="@Url.Action("AddTopeople", "Asset")">
+                    <i class="fa  fa-plus-circle"></i> <span>Bulk Asset to Employee</span>
+                </a>
+            </li>
+
+            <li class="@Html.IsSelected(controller: "Asset")">
+                <a href="@Url.Action("AddToCenter", "Asset")">
+                    <i class="fa  fa-plus-circle"></i> <span>Add Asset to Center</span>
+                </a>
+            </li>
+
+            <li class="@Html.IsSelected(controller: "Asset")">
+                <a href="@Url.Action("AddTopeople", "Asset")">
+                    <i class="fa  fa-plus-circle"></i> <span>Add Asset to Employee</span>
+                </a>
+            </li>
+
+        </ul>
+    </li>
+
+}

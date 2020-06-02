@@ -1,0 +1,347 @@
+@{ ViewData["Title"] = "Home Page"; }
+
+<bs-breadcrumb output-tag="ul">
+    <bs-crumb>
+        <a href="#">Home</a>
+    </bs-crumb>
+    <bs-crumb bs-active="true">
+        Index
+    </bs-crumb>
+</bs-breadcrumb>
+<bs-jumbotron>
+    Hello world!
+</bs-jumbotron>
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="~/images/banner1.svg" alt="ASP.NET" bs-responsive="true" bs-shape="Rounded" />
+            <div class="carousel-caption" role="option">
+                <p>
+                    Learn how to build ASP.NET apps that can run anywhere.
+                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
+                        Learn More
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+                <p>
+                    There are powerful new features in Visual Studio for building modern web apps.
+                    <bs-btn bs-output-tag="a" btn-type="Primary" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
+                        Learn More
+                    </bs-btn>
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/images/banner3.svg" alt="Package Management" bs-responsive="true" />
+            <div class="carousel-caption" role="option">
+                <p>
+                    Bring in libraries from NuGet, Bower, and npm, and automate tasks using Grunt or Gulp.
+                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525029&clcid=0x409">
+                        Learn More
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/images/banner4.svg" alt="Microsoft Azure" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+                <p>
+                    Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
+                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
+                        Learn More
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<bs-row>
+    <bs-col-uniform col-width="6">
+        
+    </bs-col-uniform>
+    <bs-col-uniform col-width="6" bs-output-tag="span">
+        Look at me, I am a column!
+        <bs-alert-dismissble alert-variation="Info">
+            This can be dismissed!<br />
+        </bs-alert-dismissble>
+        <bs-btn bs-output-tag="button" btn-variation="Default" btn-disabled="true">
+            Disabled &lt;button&gt;
+        </bs-btn>
+        <bs-btn bs-output-tag="a" btn-variation="Info" btn-disabled="true">
+            Disabled &lt;a&gt;
+        </bs-btn>
+        <bs-btn-toolbar>
+            <bs-btn-group>
+                <bs-btn bs-output-tag="div" btn-variation="Default">
+                    1
+                </bs-btn>
+                <bs-btn bs-output-tag="div" btn-variation="Primary">
+                    2
+                </bs-btn>
+                <bs-dropdown dropdown-text="Nested dropdown">
+                    <bs-dropdown-item>
+                        <a href="#">
+                            Action
+                        </a>
+                    </bs-dropdown-item>
+                    <bs-dropdown-item>
+                        <a href="#">
+                            Another action
+                        </a>
+                    </bs-dropdown-item>
+                </bs-dropdown>
+            </bs-btn-group>
+            <bs-btn-group btn-group-size="lg" class="pull-right">
+                <bs-btn bs-output-tag="div" btn-variation="Warning">
+                    3
+                </bs-btn>
+                <bs-btn bs-output-tag="div" btn-variation="Danger">
+                    4
+                </bs-btn>
+                <bs-dropup dropdown-text="Right button" dropdown-right-align="true">
+                    <bs-dropdown-item>
+                        <a href="#">
+                            Yup
+                        </a>
+                    </bs-dropdown-item>
+                    <bs-dropdown-item>
+                        <a href="#">
+                            Nope
+                        </a>
+                    </bs-dropdown-item>
+                </bs-dropup>
+            </bs-btn-group>
+        </bs-btn-toolbar>
+        <br />
+        <bs-btn-group bs-output-tag="div" btn-group-vertical="true">
+            <bs-btn bs-output-tag="div" btn-variation="Default">
+                Button 1
+            </bs-btn>
+            <bs-btn bs-output-tag="div" btn-variation="Default">
+                Button 2
+            </bs-btn>
+            <bs-dropdown dropdown-text="Dropdown">
+                <bs-dropdown-item>
+                    <a href="#">
+                        Action
+                    </a>
+                </bs-dropdown-item>
+                <bs-dropdown-item>
+                    <a href="#">
+                        Other Action
+                    </a>
+                </bs-dropdown-item>
+            </bs-dropdown>
+            <bs-btn bs-output-tag="div" btn-variation="Default">
+                Button 3
+            </bs-btn>
+            <bs-dropup dropdown-text="Dropup">
+                <bs-dropdown-item>
+                    <a href="#">
+                        Action
+                    </a>
+                </bs-dropdown-item>
+                <bs-dropdown-item>
+                    <a href="#">
+                        Other Action
+                    </a>
+                </bs-dropdown-item>
+            </bs-dropup>
+        </bs-btn-group>
+    </bs-col-uniform>
+    <bs-col-uniform col-width="6">
+        <bs-table table-striped="true" table-bordered="true">
+            <tr bs-variation="Success">
+                <td>
+                    Howdy
+                </td>
+                <td>
+                    Later
+                </td>
+            </tr>
+            <tr bs-variation="Danger">
+                <td>
+                    Whoops
+                </td>
+                <td>
+                    Bloop
+                </td>
+            </tr>
+            <tr bs-variation="Info">
+                <td bs-variation="Success">
+                    More data
+                </td>
+                <td>
+                    Other stuff here
+                </td>
+            </tr>
+            <tr>
+                <td bs-variation="Success">
+                    More data
+                </td>
+                <td>
+                    Other stuff here
+                </td>
+            </tr>
+            <tr>
+                <td bs-variation="Warning">
+                    More data
+                </td>
+                <td>
+                    Other stuff here
+                </td>
+            </tr>
+        </bs-table>
+        <bs-table-responsive>
+            <bs-table table-striped="true">
+                @for (int i = 0; i < 5; i++)
+                {
+                    <tr>
+                        <td>
+                            @i
+                        </td>
+                        <td>
+                            My @i data goes here
+                        </td>
+                    </tr>
+                }
+            </bs-table>
+        </bs-table-responsive>
+    </bs-col-uniform>
+    <bs-col-uniform col-width="6">
+        <bs-nav nav-type="pills">
+            <bs-nav-item nav-item-active="true">
+                <a href="#">
+                    Home
+                </a>
+            </bs-nav-item>
+            <bs-nav-item nav-item-disabled="true">
+                <a href="#">
+                    About
+                </a>
+            </bs-nav-item>
+            <bs-nav-item nav-item-active="true" nav-item-disabled="true">
+                <a href="#">
+                    Contact
+                </a>
+            </bs-nav-item>
+        </bs-nav>
+    </bs-col-uniform>
+    <bs-col-uniform col-width="6">
+        <bs-dropdown dropdown-text="Test dropdown">
+            <bs-dropdown-item dropdown-item-type="header">
+                Dropdown header
+            </bs-dropdown-item>
+            <bs-dropdown-item>
+                <a href="#">
+                    Action
+                </a>
+            </bs-dropdown-item>
+            <bs-dropdown-item dropdown-item-active="true">
+                <a href="#">
+                    Another Action
+                </a>
+            </bs-dropdown-item>
+            <bs-dropdown-item dropdown-item-disabled="true">
+                <a href="#">
+                    Yet Another Action
+                </a>
+            </bs-dropdown-item>
+            <bs-dropdown-item dropdown-item-type="header">
+                Dropdown header
+            </bs-dropdown-item>
+            <bs-dropdown-item dropdown-item-active="true" dropdown-item-disabled="true">
+                <a href="#">
+                    Something else
+                </a>
+            </bs-dropdown-item>
+            <bs-dropdown-item dropdown-item-type="divider" />
+            <bs-dropdown-item>
+                <a href="#">
+                    Separated link
+                </a>
+            </bs-dropdown-item>
+        </bs-dropdown>
+        <bs-dropup dropdown-text="Test dropdown">
+            <bs-dropdown-item dropdown-item-type="header">
+                Dropdown header
+            </bs-dropdown-item>
+            <bs-dropdown-item>
+                <a href="#">
+                    Action
+                </a>
+            </bs-dropdown-item>
+            <bs-dropdown-item dropdown-item-active="true">
+                <a href="#">
+                    Another Action
+                </a>
+            </bs-dropdown-item>
+            <bs-dropdown-item dropdown-item-disabled="true">
+                <a href="#">
+                    Yet Another Action
+                </a>
+            </bs-dropdown-item>
+            <bs-dropdown-item dropdown-item-type="header">
+                Dropdown header
+            </bs-dropdown-item>
+            <bs-dropdown-item dropdown-item-active="true" dropdown-item-disabled="true">
+                <a href="#">
+                    Something else
+                </a>
+            </bs-dropdown-item>
+            <bs-dropdown-item dropdown-item-type="divider" />
+            <bs-dropdown-item>
+                <a href="#">
+                    Separated link
+                </a>
+            </bs-dropdown-item>
+        </bs-dropup>
+        <bs-dropdown dropdown-text="Right aligned" class="pull-right" dropdown-right-align="true">
+            <bs-dropdown-item>
+                <a href="#">
+                    I'm right
+                </a>
+            </bs-dropdown-item>
+            <bs-dropdown-item>
+                <a href="#">
+                    I'm also right
+                </a>
+            </bs-dropdown-item>
+        </bs-dropdown>
+    </bs-col-uniform>
+</bs-row>
+
+<bs-modal id="WithOutHeader" modal-animation="false">
+    <bs-modal-body>
+        Hello, world!
+    </bs-modal-body>
+    <bs-modal-footer>
+        <bs-btn bs-output-tag="button" btn-variation="Primary" data-dismiss="modal">
+            Close
+        </bs-btn>
+    </bs-modal-footer>
+</bs-modal>
+<bs-modal id="WithHeader" modal-title="The other one" modal-size="lg">
+    <bs-modal-body>
+        I am the other modal
+    </bs-modal-body>
+</bs-modal>

@@ -1,0 +1,109 @@
+﻿@model Veam.EAM.ViewModels.AssetSaveVM
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminlteNetcoreCreate.cshtml";
+
+    ViewData["EntityIcon"] = "fa fa-bank";
+    ViewData["CreateInfo"] = "Asset Description.";
+}
+
+
+<div class="row ">
+    <div class="col-md-12">
+        @*<form asp-action="Create">*@
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <Seperator id="general" name="GeneralData">
+            <div class=" row">
+                <div class=" col-md-6">
+                    <div class="form-group">
+                        <label asp-for="assetName" class="control-label"></label>
+                        <input asp-for="assetName" class="form-control" />
+                        <span asp-validation-for="assetName" class="text-danger"></span>
+                    </div>
+                </div>
+                 
+                <div class=" col-md-6">
+                    <div class="form-group">
+                        <label asp-for="serialNo" class="control-label"></label>
+                        <input asp-for="serialNo" class="form-control" />
+                        <span asp-validation-for="serialNo" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </Seperator>
+        
+        <Seperator id="AssetModel" name="Asset Model Details">
+
+            <div class="row">
+
+                <div class=" col-md-6">
+                    <div class="form-group">
+                        <label asp-for="modalname" class="control-label"></label>
+                        <input asp-for="modalname" class="form-control" />
+                        <span asp-validation-for="modalname" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class=" col-md-6">
+                    <div class="form-group">
+                        <label asp-for="modelNo" class="control-label"></label>
+                        <input asp-for="modelNo" class="form-control" />
+                        <span asp-validation-for="modelNo" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group widget example col-xl-6">
+                        <label asp-for="product" class="control-label"></label>
+                        @*<select class="form-control select2" id="SectionId" name="SectionId" asp-for="product"
+                    asp-items="@(new SelectList(string.Empty, "Value","Text"))"></select>*@
+                        <select asp-for="product" class="form-control select2" asp-items="@Model.Products"></select>
+                        @*<select asp-for="product" class="form-control select2" asp-items="@ViewBag.ProductName"></select>*@
+                        @*<div mvc-lookup-for="product" url="~/Lookup/modelLookup" title="Asset Models" rows="10"></div>*@
+                        <span asp-validation-for="product" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class=" col-md-6">
+                    <div class="form-group">
+                        <label asp-for="brand" class="control-label"></label>
+                        <input asp-for="brand" class="form-control" />
+                        <span asp-validation-for="brand" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+        </Seperator> 
+         @*</form>*@
+    </div>
+</div>
+
+
+@section Styles{
+
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/adminlte/plugins/iCheck/all.css" />
+
+}
+
+@section Scripts {
+
+    <!-- iCheck -->
+    <script src="~/adminlte/plugins/iCheck/icheck.min.js"></script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' /* optional */
+            });
+        });
+    </script>
+
+
+}

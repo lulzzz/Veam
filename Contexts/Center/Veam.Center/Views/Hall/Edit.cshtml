@@ -1,0 +1,65 @@
+﻿@model Veam.Centers.ViewModels.HallSaveVM
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminlteNetcoreEdit.cshtml";
+    ViewData["EntityIcon"] = "fa fa-cubes";
+}
+
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="HallId" />
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="hallName" class="control-label"></label>
+                        <input asp-for="hallName" class="form-control" />
+                        <span asp-validation-for="hallName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="CenterId" class="control-label"></label>
+                        <select asp-for="CenterId" class="form-control select2" asp-items="@ViewBag.CenterList"></select>
+                        <span asp-validation-for="CenterId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="HallNo" class="control-label"></label>
+                        <input asp-for="HallNo" class="form-control" />
+                        <span asp-validation-for="HallNo" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="FloorNo" class="control-label"></label>
+                        <input asp-for="FloorNo" class="form-control" />
+                        <span asp-validation-for="FloorNo" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

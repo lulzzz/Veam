@@ -1,0 +1,32 @@
+﻿@model Veam.EAM.ViewModels.CheckoutVM
+
+<div class="row">
+    <div class="col-md-12">
+        <div class=" row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="toEmp.subsideryId" class="control-label"></label>
+                    <select id="centerList" asp-for="toEmp.subsideryId" class="form-control select2" asp-items="@Model. subsideryList"></select>
+                    <span asp-validation-for="toEmp.subsideryId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="toEmp.employeeId " class="control-label"></label>
+                    <select id="hallList" asp-for="toEmp.employeeId" class="form-control select2" asp-items="@Model.EmpList  "></select>
+                    <span asp-validation-for="toEmp.employeeId" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="toEmp.departmentId " class="control-label"></label>
+                    <select id="hallList" asp-for="toEmp.departmentId" class="form-control select2" asp-items="@Model.deptList  "></select>
+                    <span asp-validation-for="toEmp.departmentId" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+          
+    </div>
+</div>

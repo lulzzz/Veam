@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <!--<TargetFramework>netstandard2.1</TargetFramework>-->
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Views\**" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Remove="Views\Examples\**" />
+    <Content Remove="Views\Examples\**" />
+    <EmbeddedResource Remove="Views\Examples\**" />
+    <None Remove="Views\Examples\**" />
+  </ItemGroup>
+
+ 
+
+ 
+ 
+ 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CrossCutting\Barebone\Barebone.csproj" />
+    <ProjectReference Include="..\..\..\Infra\Veam.Infra.Identity\Veam.Infra.Identity.csproj" /> 
+    <ProjectReference Include="..\Veam.EAM.Application\Veam.EAM.Application.csproj" />
+  </ItemGroup>
+ 
+ 
+
+</Project>

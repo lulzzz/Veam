@@ -1,0 +1,78 @@
+﻿@model Veam.Centers.ViewModels.CenterQueryVm
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
+    ViewData["EntityIcon"] = "fa fa-building-o";
+    ViewData["DeleteInfo"] = "Existing Centers With Assets cannot be deleted!";
+    //netcore.Models.Invent.Warehouse wh = _context.Warehouse.Where(x => x.branchId.Equals(Model.branchId)).FirstOrDefault();
+    //ViewData["IsCanDeleted"] = false;
+    //if (wh == null)
+    //{
+    //    ViewData["IsCanDeleted"] = true;
+    //}
+}
+
+
+@Html.Partial("_StatusMessage", (string)ViewBag.StatusMessage)
+<div>
+
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CenterId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CenterId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.buildingNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.buildingNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CenterName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CenterName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.buildingName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.buildingName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CenterType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CenterType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Subsidery)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Subsidery)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.isHO)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.isHO)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Addressfull)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Addressfull)
+        </dd>
+    </dl>
+
+</div>

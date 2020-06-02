@@ -1,0 +1,211 @@
+﻿@model Veam.EAM.ViewModels.AssetPurchaseSaveVM
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
+}
+
+
+
+
+<Seperator id="BillDetails" name="Bill Details">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="billNo" class="control-label"></label>
+                <input id="BillNo" asp-for="billNo" class="form-control" />
+                <span asp-validation-for="billNo" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="billedDate" class="control-label"></label>
+                <DatePicker>
+                    <input id="BillDate" asp-for="billedDate" value="" class="form-control  pull-right datepicker" type="text" />
+                </DatePicker>
+                <span asp-validation-for="billedDate" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label asp-for="notes" rows="3" class="control-label"></label>
+                <input Id="Notes" asp-for="notes" class="form-control" />
+                <span asp-validation-for="notes" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+</Seperator>
+
+<Seperator id="asset" name="Select Asset Of the Bill">
+
+    <div class=" row">
+        @*<div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="centerId" class="control-label"></label>
+                    <select id="centerList" asp-for="centerId" class="form-control select2" asp-items="@Model.CenterList"></select>
+                    <span asp-validation-for="centerId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="hallid" class="control-label"></label>
+                    <select id="hallList" asp-for="hallid" class="form-control select2" asp-items="@Model.HallList"></select>
+                    <span asp-validation-for="hallid" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="assetId" class="control-label"></label>
+                        <select id="assetList" asp-for="assetId " class="form-control select2" asp-items="@Model.AssetList"></select>
+                        <span asp-validation-for="assetId" class="text-danger"></span>
+                    </div>
+                </div>
+            <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="button" id="add" value="add" />
+                    </div>
+                </div>
+
+        </div>*@
+        <div style="padding:10px 0px; text-align:right">
+            <input id="submit" type="button" value="Save" style="padding:10px 20px" />
+        </div>
+        <table id="grid-selection" class="table table-condensed table-hover table-striped">
+            <thead>
+                <tr>
+                    <th data-column-id="assetId" data-type="numeric" data-identifier="true" colspan="5">ID</th>
+                    <th data-column-id="assetName">Asset name</th>
+                    <th data-column-id="modalname" data-order="desc">Model name</th>
+                    <th data-column-id="serialNo" data-formatter="link" data-sortable="false">Sr No</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+</Seperator>
+
+
+@section Styles{
+
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/adminlte/plugins/iCheck/all.css" />
+    <!-- BootGrid -->
+    <link href="~/lib/jquery-bootgrid/jquery.bootgrid.min.css" rel="stylesheet" />
+}
+
+@section Scripts {
+
+    <!-- iCheck -->
+    <script src="~/adminlte/plugins/iCheck/icheck.min.js"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <!-- BootGrid -->
+    <script src="~/lib/jquery-bootgrid/jquery.bootgrid.min.js"></script>
+    <!--custom AssetGrid-->
+    @*<script src="~/Modules/EAM/AssetPurchase.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                loadAssetGrid();
+            });
+        </script>*@
+    <script>
+        var entity = 'Asset';
+        var apiurl = '/api/' + entity;
+        var BillItems = [];
+        var items = [];
+        $(document).ready(function () {
+
+            $("#grid-selection").bootgrid({
+                ajax: true,
+                url: apiurl,
+                navigation: 0,
+                selection: true,
+                multiSelect: true,
+                formatters: {
+                    "link": function (column, row) {
+                        return "<a href=\"#\">" + column.id + ": " + row.id + "</a>";
+                    }
+                }
+            }).on("selected.rs.jquery.bootgrid", function (e, rows) {
+                for (var i = 0; i < rows.length; i++) {
+                    items.push(rows[i].assetId);
+                }
+                BillItems = [];
+                for (var i = 0; i < items.length; i++) {
+                    BillItems.push({ assetId: items[i] });
+                }
+            })
+                .on("deselected.rs.jquery.bootgrid", function (e, rows) {
+
+                for (var i = 0; i < rows.length; i++) {
+                    var removeItem = rows[i].assetId;
+                    items = jQuery.grep(items, function (value) { return value !== removeItem });
+                }
+                BillItems = [];
+                for (var i = 0; i < items.length; i++) {
+                    BillItems.push({ assetId: items[i] });
+                }
+            });
+        });
+
+        //Save button click function
+        $('#submit').click(function () {
+            //validation of order
+            var isAllValid = true;
+            if (BillItems.length == 0) {
+                alert("Please selected atleast one item");
+                isAllValid = false;
+            }
+
+            //Save if valid
+            if (isAllValid) {
+                var data = {
+                    billNo: $('#BillNo').val(),
+                    billedDate: $('#BillDate').val(),
+                    notes: $('#Notes').val(),
+                    assets: BillItems,
+                };
+                debugger;
+                $(this).val('Please wait...');
+
+                $.ajax({
+                    url: '/Bill/Create',
+                    type: "POST",
+                    data: JSON.stringify(data),
+                   // dataType: "JSON",
+                    contentType: "application/json",
+                    success: function (d) {
+                        //check is successfully save to database
+                        if (d.status == true) {
+                            //will send status from server side
+                            alert('Successfully done.');
+                            //clear form
+                            BillItems = [];
+                            $('#BillNo').val('');
+                            $('#BillDate').val('');
+                             $('#Notes').val('');
+                          //  $('#BillItems').empty();
+                           // BillItems
+                            
+                        }
+                        else {
+                            alert('Failed');
+                        }
+                        $('#submit').val('Save');
+                    },
+                    error: function () {
+                        alert('Error. Please try again.');
+                        $('#submit').val('Save');
+                    }
+                });
+            }
+
+        });
+
+    </script>
+}
+

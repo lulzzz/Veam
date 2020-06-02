@@ -1,0 +1,103 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    //{
+    //  "library": "admin-lte@2.4.15",
+    //  "destination": "wwwroot/libs/admin-lte/"
+    //},
+    //{
+    //  "library": "twitter-bootstrap@3.4.1",
+    //  "destination": "wwwroot/libs/bootstrap/"
+    //},
+    //{
+    //  "library": "datatables@1.10.19",
+    //  "destination": "wwwroot/libs/datatables/"
+    //},
+    //{
+    //  "library": "fastclick@1.0.6",
+    //  "destination": "wwwroot/libs/fastclick/"
+    //},
+    //{
+    //  "library": "font-awesome@4.7.0",
+    //  "destination": "wwwroot/libs/font-awesome/"
+    //},
+    //{
+    //  "library": "fullcalendar@3.10.0",
+    //  "destination": "wwwroot/libs/fullcalendar/"
+    //},
+    //{
+    //  "library": "iCheck@1.0.2",
+    //  "destination": "wwwroot/libs/icheck/"
+    //},
+    //{
+    //  "library": "inputmask@3.3.11",
+    //  "destination": "wwwroot/libs/inputmask/",
+    //  "files": [
+    //    "jquery.inputmask.bundle.min.js"
+    //  ]
+    //},
+    //{
+    //  "library": "ionicons@4.5.6",
+    //  "destination": "wwwroot/libs/ionicons/",
+    //  "files": [
+    //    "css/ionicons.min.css",
+    //    "css/ionicons-core.css",
+    //    "css/ionicons-core.min.css",
+    //    "css/ionicons.css",
+    //    "fonts/ionicons.eot",
+    //    "fonts/ionicons.svg",
+    //    "fonts/ionicons.ttf",
+    //    "fonts/ionicons.woff",
+    //    "fonts/ionicons.woff2"
+    //  ]
+    //},
+    //{
+    //  "library": "jquery@3.3.1",
+    //  "destination": "wwwroot/libs/jquery/",
+    //  "files": [
+    //    "jquery.min.js",
+    //    "jquery.js",
+    //    "jquery.min.map"
+    //  ]
+    //},
+    //{
+    //  "library": "jQuery-slimScroll@1.3.8",
+    //  "destination": "wwwroot/libs/jquery-slimscroll/"
+    //},
+    //{
+    //  "library": "jquery-sparklines@2.1.2",
+    //  "destination": "wwwroot/libs/jquery-sparklines/"
+    //},
+    //{
+    //  "library": "jquery.qrcode@1.0",
+    //  "destination": "wwwroot/libs/jquery-qrcode/"
+    //},
+    //{
+    //  "library": "jqueryui@1.12.1",
+    //  "destination": "wwwroot/libs/jquery-ui/",
+    //  "files": [
+    //    "jquery-ui.min.js",
+    //    "jquery-ui.min.css",
+    //    "jquery-ui.js",
+    //    "jquery-ui.css"
+    //  ]
+    //},
+    //{
+    //  "library": "jquery-validate@1.19.1",
+    //  "destination": "wwwroot/libs/jquery-validate/"
+    //},
+    //{
+    //  "library": "jquery-validation-unobtrusive@3.2.11",
+    //  "destination": "wwwroot/libs/jquery-validation-unobtrusive/"
+    //},
+    //{
+    //  "library": "pace@1.0.2",
+    //  "destination": "wwwroot/libs/pace/"
+    //},
+    //{
+    //  "library": "blueimp-file-upload@10.1.0",
+    //  "destination": "wwwroot/libs/blueimp-file-upload/"
+    //}
+  ]
+}

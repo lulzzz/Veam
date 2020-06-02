@@ -1,0 +1,55 @@
+﻿@model Veam.Models.ApplicationUser
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject Veam.Data.ApplicationDbContext Context
+@{
+    ApplicationUser appUser = await UserManager.GetUserAsync(User);
+
+}
+
+
+@if (appUser.HomeRole)
+{
+    @*<li class="header">EAM </li>*@
+    <li class="@Html.IsSelected(actions: "Asset") treeview">
+        <a href="#">
+            <i class="fa fa-dashboard"></i> <span>EAM</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="@Html.IsSelected(controller: "Asset")">
+                <a href="@Url.Action("Index", "Asset")">
+                    <i class="fa fa-tags"></i> <span>Asset</span>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "Model")">
+                <a href="@Url.Action("Index", "Model")">
+                    <i class="fa fa-tags"></i> <span>Model</span>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "Manufacturer")">
+                <a href="@Url.Action("Index", "Manufacturer")">
+                    <i class="fa fa-tags"></i> <span>Manufacturer</span>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "AssetPurchase")">
+                <a href="@Url.Action("Index", "AssetPurchase")">
+                    <i class="fa fa-tags"></i> <span>AssetPurchase</span>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "Maintenance")">
+                <a href="@Url.Action("Index", "Maintenance")">
+                    <i class="fa fa-tags"></i> <span>Maintenance</span>
+                </a>
+            </li>
+
+            <li class="@Html.IsSelected(controller: "FileUploads")">
+                <a href="@Url.Action("Index", "FileUploads")">
+                    <i class="fa fa-tags"></i> <span>FileUploads</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+}

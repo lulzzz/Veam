@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<partial name="_Partial1" />
+<partial name="_Partial2" render="true" />
+<system-info class="dl-horizontal" />
+<system-info visible="false" />
+<if>
+    <p>Included 1</p>
+</if>
+<if include-if="true">
+    <p>Included 2</p>
+</if>
+<if exclude-if="false">
+    <p>Included 3</p>
+</if>
+<p include-if="true">Included 4</p>
+<p exclude-if="false">Included 5</p>
+
+<if include-if="false">
+    <p>Excluded 1</p>
+</if>
+<if exclude-if="true">
+    <p>Excluded 2</p>
+</if>
+<p include-if="false">Excluded 3</p>
+<p exclude-if="true">Excluded 4</p>

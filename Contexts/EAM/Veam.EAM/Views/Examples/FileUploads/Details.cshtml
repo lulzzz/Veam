@@ -1,0 +1,61 @@
+﻿@model Veam.EAM.Domain.AssetUploads
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminlteNetcoreIndex.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AssetUploads</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.asset)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.asset.assetName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.userId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.userId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.fileName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.fileName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.fileSize)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.fileSize)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.fileNotes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.fileNotes)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.createdAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.createdAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

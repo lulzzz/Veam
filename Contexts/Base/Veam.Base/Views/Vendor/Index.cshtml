@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Veam.Base.ViewModels.VendorQueryVM>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminlteNetcoreIndex.cshtml";
+    ViewData["EntityIcon"] = "fa fa-industry";
+    ViewData["ListTitle"] = "List Of Suppliers";
+    ViewData["IndexInfo"] = "Here We maintain Supplier Commpany Details. after adding it, add contact person Details";
+}
+
+
+<table class="table table-hover table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Create" class="btn bg-olive-active btn-sm "><i class="fa fa-plus margin-r-5"></i><span>Add New</span></a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegisterCompanyName)
+            </th>
+            <th >
+                @Html.DisplayNameFor(model => model.GstNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfficeContact)
+            </th>
+            <th >
+                @Html.DisplayNameFor(model => model.BillAddress)
+            </th>
+           
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                <div class="tools">
+                    <a asp-action="Edit" asp-route-id="@item.vendorId" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.vendorId" class="btn btn-primary btn-xs"><i class="fa fa-list"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.vendorId" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                </div>
+                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegisterCompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GstNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OfficeContact)
+            </td>
+            <td >
+                @Html.DisplayFor(modelItem => item.BillAddress)
+            </td>
+            
+
+        </tr>
+        }
+    </tbody>
+</table>

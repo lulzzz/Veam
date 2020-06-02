@@ -1,0 +1,127 @@
+﻿@model Veam.EAM.Domain.AssetRegister
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminlteNetcoreIndex.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AssetRegister</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.assetName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.assetName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.assetTag)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.assetTag)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.serialNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.serialNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.barcode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.barcode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.assetModelId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.assetModelId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.statusType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.statusType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.assetPurchase)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.assetPurchase.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.assignedType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.assignedType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.assignmentStatus)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.assignmentStatus)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.acceptedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.acceptedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.checkedinDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.checkedinDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.returnedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.returnedDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.locationId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.locationId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.createdAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.createdAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.createdBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.createdBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.modifiedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.modifiedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.modifiedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.modifiedBy)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

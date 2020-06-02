@@ -1,0 +1,309 @@
+﻿@model Veam.Models.ApplicationUser
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject Veam.Data.ApplicationDbContext Context
+@{
+
+    ApplicationUser appUser = await UserManager.GetUserAsync(User);
+
+}
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        @if (Model != null)
+        {
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="@Model.profilePictureUrl" class="img-circle profilePicture" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>@Model.Email</p>
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            </div>
+
+        }
+
+        @if (appUser != null)
+        {
+    <ul class="sidebar-menu" data-widget="tree">
+
+
+
+        @if (appUser.HomeRole)
+        {
+            <li class="@Html.IsSelected(controller: "Home")">
+                <a href="@Url.Action("Index", "Home")">
+                    <i class="fa fa-bar-chart"></i> <span>DashBoard</span>
+                </a>
+            </li>
+        }
+
+        @*<li class="header">Property Management</li>*@
+        <li class="@Html.IsSelected(actions: "Branch") treeview">
+            <a href="#">
+                <i class="fa fa-dashboard"></i> <span>Centers</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                @if (appUser.HomeRole)
+                {
+                    <li class="@Html.IsSelected(controller: "Building")">
+                        <a href="@Url.Action("Index", "Building")">
+                            <i class="fa fa-building-o"></i> <span>Building</span>
+                        </a>
+                    </li>
+                }
+
+                @if (appUser.HomeRole)
+                {
+                    <li class="@Html.IsSelected(controller: "Center")">
+                        <a href="@Url.Action("Index", "Center")">
+                            <i class="fa fa-building-o"></i> <span>Centers</span>
+                        </a>
+                    </li>
+                }
+
+
+                @if (appUser.HomeRole)
+                {
+
+                    <li class="@Html.IsSelected(controller: "Hall")">
+                        <a href="@Url.Action("Index", "Hall")">
+                            <i class="fa fa-cubes"></i> <span>Halls</span>
+                        </a>
+                    </li>
+
+                }
+
+            </ul>
+        </li>
+        <li class="@Html.IsSelected(actions: "Asset") treeview">
+            <a href="#">
+                <i class="fa fa-dashboard"></i> <span>Purchase</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                @if (appUser.HomeRole)
+                {
+
+                    <li class="@Html.IsSelected(controller: "Product")">
+                        <a href="@Url.Action("Index", "Product")">
+                            <i class="fa fa-tags"></i> <span>Products</span>
+                        </a>
+                    </li>
+                }
+
+
+
+                @if (appUser.HomeRole)
+                {
+                    <li class="@Html.IsSelected(controller: "Vendor")">
+                        <a href="@Url.Action("Index", "Vendor")">
+                            <i class="fa fa-industry"></i> <span>Supplier</span>
+                        </a>
+                    </li>
+                }
+
+                @if (appUser.HomeRole)
+                {
+                    <li class="@Html.IsSelected(controller: "PurchaseOrder")">
+                        <a href="@Url.Action("Index", "PurchaseOrder")">
+                            <i class="fa fa-file-text"></i> <span>Purchase Order</span>
+                        </a>
+                    </li>
+                }
+
+                @if (appUser.HomeRole)
+                {
+                    <li class="@Html.IsSelected(controller: "Receiving")">
+                        <a href="@Url.Action("Index", "Receiving")">
+                            <i class="fa fa-truck"></i> <span>Receivings</span>
+                        </a>
+                    </li>
+                }
+
+            </ul>
+        </li>
+
+
+        @if (appUser.HomeRole)
+        {
+            @*<li class="header">EAM </li>*@
+            <li class="@Html.IsSelected(actions: "Asset") treeview">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>EAM</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="@Html.IsSelected(controller: "Asset")">
+                        <a href="@Url.Action("Index", "Asset")">
+                            <i class="fa fa-tags"></i> <span>Asset</span>
+                        </a>
+                    </li>
+                    <li class="@Html.IsSelected(controller: "Model")">
+                        <a href="@Url.Action("Index", "Model")">
+                            <i class="fa fa-tags"></i> <span>Model</span>
+                        </a>
+                    </li>
+                    <li class="@Html.IsSelected(controller: "Manufacturer")">
+                        <a href="@Url.Action("Index", "Manufacturer")">
+                            <i class="fa fa-tags"></i> <span>Manufacturer</span>
+                        </a>
+                    </li>
+                    <li class="@Html.IsSelected(controller: "AssetPurchase")">
+                        <a href="@Url.Action("Index", "AssetPurchase")">
+                            <i class="fa fa-tags"></i> <span>AssetPurchase</span>
+                        </a>
+                    </li>
+                    <li class="@Html.IsSelected(controller: "Maintenance")">
+                        <a href="@Url.Action("Index", "Maintenance")">
+                            <i class="fa fa-tags"></i> <span>Maintenance</span>
+                        </a>
+                    </li>
+
+                    <li class="@Html.IsSelected(controller: "FileUploads")">
+                        <a href="@Url.Action("Index", "FileUploads")">
+                            <i class="fa fa-tags"></i> <span>FileUploads</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        }
+
+        @*<li class="header">Purchase </li>*@
+
+
+
+        <li class="@Html.IsSelected(actions: "TransferOrder") treeview">
+            <a href="#">
+                <i class="fa fa-dashboard"></i> <span>Stock Transfer</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                @if (appUser.HomeRole)
+                {
+                    <li class="@Html.IsSelected(controller: "Stock")">
+                        <a href="@Url.Action("Index", "Stock")">
+                            <i class="fa fa-cube"></i> <span>Stock</span>
+                        </a>
+                    </li>
+                }
+
+                @if (appUser.HomeRole)
+                {
+                    <li class="@Html.IsSelected(controller: "TransferOrder")">
+                        <a href="@Url.Action("Index", "TransferOrder")">
+                            <i class="fa fa-recycle"></i> <span>Transfer Order</span>
+                        </a>
+                    </li>
+                }
+
+                @if (appUser.HomeRole)
+                {
+                    <li class="@Html.IsSelected(controller: "TransferOut")">
+                        <a href="@Url.Action("Index", "TransferOut")">
+                            <i class="fa fa-upload"></i> <span>Transfer Out</span>
+                        </a>
+                    </li>
+                }
+
+                @if (appUser.HomeRole)
+                {
+                    <li class="@Html.IsSelected(controller: "TransferIn")">
+                        <a href="@Url.Action("Index", "TransferIn")">
+                            <i class="fa fa-download"></i> <span>Transfer In</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </li>
+
+
+        @*<li class="header">Sales </li>*@
+        <li class="@Html.IsSelected(actions: "Customer") treeview">
+            <a href="#">
+                <i class="fa fa-dashboard"></i> <span>Sales Shipment</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+
+                @if (appUser.HomeRole)
+                {
+
+                    <li class="@Html.IsSelected(controller: "Customer")">
+                        <a href="@Url.Action("Index", "Customer")">
+                            <i class="fa fa-bank"></i> <span>Customer</span>
+                        </a>
+                    </li>
+                }
+
+
+
+
+                @if (appUser.HomeRole)
+                {
+                    <li class="@Html.IsSelected(controller: "SalesOrder")">
+                        <a href="@Url.Action("Index", "SalesOrder")">
+                            <i class="fa fa-cart-plus"></i> <span>Sales Order</span>
+                        </a>
+                    </li>
+                }
+
+                @if (appUser.HomeRole)
+                {
+                    <li class="@Html.IsSelected(controller: "Shipment")">
+                        <a href="@Url.Action("Index", "Shipment")">
+                            <i class="fa fa-plane"></i><span> Shipment</span>
+                        </a>
+                    </li>
+                }
+
+            </ul>
+        </li>
+
+
+
+        @if (appUser.ApplicationUserRole)
+        {
+            <li class="header">Users Roles</li>
+            <li class="@Html.IsSelected(controller: "ApplicationUser")">
+                <a href="@Url.Action("Index", "ApplicationUser")">
+                    <i class="fa fa-users"></i> <span>App Users Roles</span>
+                </a>
+            </li>
+
+        }
+
+        @*<li class="@Html.IsSelected(controller: "AssetAllocations")">
+            <a href="@Url.Action("Index", "AssetAllocations")">
+                <i class="fa fa-tags"></i> <span>AssetAllocations</span>
+            </a>
+        </li>*@
+
+        @*<li class="header">BONUS TEMPLATE</li>
+        <li class="@Html.IsSelected(controller: "Adminlte", action: "Dashboardv1")">
+            <a href="@lte.MVC.Pages.Dashbaordv1.Url" target="_blank">
+                <i class="fa fa-gears"></i> <span>Demo</span>
+            </a>
+        </li>*@
+    </ul>
+
+        }
+
+
+
+</section>
+    <!-- /.sidebar -->
+</aside>

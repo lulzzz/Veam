@@ -1,0 +1,24 @@
+﻿@model Veam.EAM.ViewModels.CheckoutVM
+
+<div class="row">
+    <div class="col-md-12"> 
+        <div class=" row">
+            <div class=" col-md-6">
+                <div class="form-group">
+                    <label asp-for=" assignInfo.assetConditon" class="control-label"></label>
+                    <input asp-for="assignInfo.assetConditon" class="form-control" />
+                    <span asp-validation-for="assignInfo.assetConditon " class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class=" col-md-6">
+                <div class="form-group">
+                    <label asp-for=" assignInfo.conditionNote" class="control-label"></label>
+                    <input asp-for="assignInfo.conditionNote" class="form-control" />
+                    <span asp-validation-for="assignInfo.conditionNote" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

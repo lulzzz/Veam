@@ -1,0 +1,110 @@
+﻿@model Veam.EAM.Domain.ManufacturerCommandVm
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminlteNetcoreCreate.cshtml";
+
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="name" class="control-label"></label>
+                        <input asp-for="name" class="form-control" />
+                        <span asp-validation-for="name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="code" class="control-label"></label>
+                        <input asp-for="code" class="form-control" />
+                        <span asp-validation-for="code" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="website" class="control-label"></label>
+                        <input asp-for="website" class="form-control" />
+                        <span asp-validation-for="website" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="serviceSupportUrl" class="control-label"></label>
+                        <input asp-for="serviceSupportUrl" class="form-control" />
+                        <span asp-validation-for="serviceSupportUrl" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="serviceSupportPhone" class="control-label"></label>
+                        <input asp-for="serviceSupportPhone" class="form-control" />
+                        <span asp-validation-for="serviceSupportPhone" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="serviceSupportEmail" class="control-label"></label>
+                        <input asp-for="serviceSupportEmail" class="form-control" />
+                        <span asp-validation-for="serviceSupportEmail" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class=" col-md-4">
+                <div class="form-group">
+                    <label asp-for="logoImage" class="control-label"></label>
+                    <div>
+                        <span class="btn fileinput-button">
+                            <!-- The file input field used as target for the file upload widget -->
+                            <input id="fileupload" type="file" name="files" multiple="">
+                        </span>
+                    </div>
+                    <div>
+                        <div id="progress" class="progress">
+                            <div class="progress-bar progress-bar-success"></div>
+                        </div>
+                    </div>
+                    <p class="help-block">uploade logo image here.</p>
+                </div>
+
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+
+@section Styles{
+
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/adminlte/plugins/iCheck/all.css" />
+
+}
+
+@section Scripts {
+
+    <!-- iCheck -->
+    <script src="~/adminlte/plugins/iCheck/icheck.min.js"></script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+    $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' /* optional */
+            });
+        });</script>
+
+
+}

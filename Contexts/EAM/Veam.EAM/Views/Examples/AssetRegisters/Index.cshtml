@@ -1,0 +1,138 @@
+﻿@model IEnumerable<Veam.EAM.Domain.AssetRegister>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminlteNetcoreIndex.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.assetName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.assetTag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.serialNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.barcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.assetModelId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.statusType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.assetPurchase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.assignedType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.assignmentStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.acceptedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.checkedinDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.returnedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.locationId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.createdAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.createdBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.modifiedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.modifiedBy)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.assetName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.assetTag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.serialNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.barcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.assetModel.modelNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.statusType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.assetPurchase.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.assignedType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.assignmentStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.acceptedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.checkedinDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.returnedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.locationId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.createdAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.createdBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.modifiedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.modifiedBy)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

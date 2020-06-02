@@ -1,0 +1,158 @@
+﻿@model IEnumerable<Veam.EAM.Domain.AssetMaintenance>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminlteNetcoreIndex.cshtml";
+}
+<table class="table table-hover table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Create" class="btn bg-olive-active btn-sm "><i class="fa fa-plus margin-r-5"></i><span>Add New</span></a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetMaintanceType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isInWarranty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompletionDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.assetMaintanceTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.discription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PurchaseOrderNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.billedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.billedCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.billCopy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WarrantyMonths)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.warrantyStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.warrantyEndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.warrantyBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Asset)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.servicevendor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.createdAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                <div class="tools">
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-xs"><i class="fa fa-list"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                </div>
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssetMaintanceType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isInWarranty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompletionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.assetMaintanceTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.discription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PurchaseOrderNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.billedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.billedCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.billCopy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WarrantyMonths)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.warrantyStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.warrantyEndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.warrantyBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Asset.assetName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.servicevendor.vendorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.createdAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>

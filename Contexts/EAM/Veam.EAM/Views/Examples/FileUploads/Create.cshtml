@@ -1,0 +1,66 @@
+﻿@model Veam.EAM.Domain.AssetUploads
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminlteNetcoreCreate.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="assetId" class="control-label"></label>
+                <select asp-for="assetId" class="form-control" asp-items="ViewBag.assetId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="userId" class="control-label"></label>
+                <input asp-for="userId" class="form-control" />
+                <span asp-validation-for="userId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fileName" class="control-label"></label>
+                <input asp-for="fileName" class="form-control" />
+                <span asp-validation-for="fileName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fileSize" class="control-label"></label>
+                <input asp-for="fileSize" class="form-control" />
+                <span asp-validation-for="fileSize" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fileNotes" class="control-label"></label>
+                <input asp-for="fileNotes" class="form-control" />
+                <span asp-validation-for="fileNotes" class="text-danger"></span>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Styles{
+
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/adminlte/plugins/iCheck/all.css" />
+
+}
+
+@section Scripts {
+
+    <!-- iCheck -->
+    <script src="~/adminlte/plugins/iCheck/icheck.min.js"></script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+    $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' /* optional */
+            });
+        });</script>
+
+
+}

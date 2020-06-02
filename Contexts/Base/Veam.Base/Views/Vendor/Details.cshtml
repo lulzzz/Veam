@@ -1,0 +1,124 @@
+﻿@model Veam.Base.ViewModels.VendorQueryVM
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
+    ViewData["EntityIcon"] = "fa fa-industry";
+}
+
+
+
+<div class="row">
+    <div class="col-md-9">
+        <!-- Default box -->
+        <div class="box box-primary">
+            <div class="box-body">
+                <div>
+
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.RegisterCompanyName)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.RegisterCompanyName)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.description)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.description)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.GstNo)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.GstNo)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.OfficeContact)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.OfficeContact)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.workEmail)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.workEmail)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.BillAddress)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.BillAddress)
+                        </dd>
+
+                    </dl>
+
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <div class="form-group">
+                    <a asp-action="Edit" asp-route-id="@Model.vendorId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Index" class="btn btn-default">Return...</a>
+                </div>
+            </div>
+            <!-- /.box-footer-->
+        </div>
+        <!-- /.box -->
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+
+<partial name="_VendorLineTable" />
+<partial name="APICrud/_ModelPopUp" />
+<partial name="APICrud/_SubmitDelete" />
+
+@section Scripts{
+    <script>
+                var popup, dataTable;
+                var entity = 'VendorLine';
+                var apiurl = '/api/' + entity;
+
+                $(document).ready(function () {
+                    dataTable = $('#grid').DataTable({
+                        "ajax": {
+                            "url": apiurl + '?masterid=@Model.vendorId',
+                            "type": 'GET',
+                            "datatype": 'json'
+                        },
+                        "columns": [
+                            { "data": "contactFullName"},
+                            { "data": "mobilePhone" },
+                            { "data": "jobTitle" },
+                            {
+                                "data": "vendorLineId",
+                                "render": function (data) {
+                                    var btnEdit = "<a class='btn btn-primary btn-sm' onclick=ShowPopup('/" + entity + "/Create/" + data + "')><i class='fa fa-pencil'></i></a>";
+                                    var btnDelete = "<a class='btn btn-danger btn-sm' onclick=Delete('" + data + "')><i class='fa fa-trash'></i></a>";
+
+                                    return "<div class='tools '>" + btnEdit + btnDelete + "</div>";
+                                }
+                            }
+                        ],
+                        "aoColumnDefs": [
+                          { 'bSortable': false, 'aTargets': [ 3 ] }
+                        ],
+                        "language": {
+                            "emptyTable": "no data found."
+                        },
+                        "lengthChange": false,
+                        "info": false,
+                        "searching": false,
+                        "paging": false,
+                    });
+                });
+
+
+    </script>
+}
+

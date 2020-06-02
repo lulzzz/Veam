@@ -1,0 +1,69 @@
+﻿@model Veam.EAM.Domain.ManufacturerAddinfoVm
+
+@{
+    ViewData["Title"] = "Addinfo";
+    Layout = "~/Views/Shared/_AdminlteNetcoreIndex.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Addinfo" asp-controller="Manufacturer">
+            <input type="hidden" asp-for="Id" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="name" class="control-label"></label>
+                        <input asp-for="name" class="form-control "readonly  />
+                        <span asp-validation-for="name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="code" class="control-label"></label>
+                        <input asp-for="code" class="form-control " readonly />
+                        <span asp-validation-for="code" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="website" class="control-label"></label>
+                <input asp-for="website" class="form-control" />
+                <span asp-validation-for="website" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="serviceSupportUrl" class="control-label"></label>
+                <input asp-for="serviceSupportUrl" class="form-control" />
+                <span asp-validation-for="serviceSupportUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="serviceSupportPhone" class="control-label"></label>
+                <input asp-for="serviceSupportPhone" class="form-control" />
+                <span asp-validation-for="serviceSupportPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="serviceSupportEmail" class="control-label"></label>
+                <input asp-for="serviceSupportEmail" class="form-control" />
+                <span asp-validation-for="serviceSupportEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="logoImage" class="control-label"></label>
+                <input asp-for="logoImage" class="form-control" />
+                <span asp-validation-for="logoImage" class="text-danger"></span>
+            </div>
+            <div class="box-footer">
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-default">Return...</a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

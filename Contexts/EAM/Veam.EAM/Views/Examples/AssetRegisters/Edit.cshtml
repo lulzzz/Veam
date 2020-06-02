@@ -1,0 +1,122 @@
+﻿@model Veam.EAM.Domain.AssetRegister
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminlteNetcoreIndex.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>AssetRegister</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="assetName" class="control-label"></label>
+                <input asp-for="assetName" class="form-control" />
+                <span asp-validation-for="assetName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="assetTag" class="control-label"></label>
+                <input asp-for="assetTag" class="form-control" />
+                <span asp-validation-for="assetTag" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="serialNo" class="control-label"></label>
+                <input asp-for="serialNo" class="form-control" />
+                <span asp-validation-for="serialNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="barcode" class="control-label"></label>
+                <input asp-for="barcode" class="form-control" />
+                <span asp-validation-for="barcode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="assetModelId" class="control-label"></label>
+                <input asp-for="assetModelId" class="form-control" />
+                <span asp-validation-for="assetModelId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="statusType" class="control-label"></label>
+                <select asp-for="statusType" class="form-control"></select>
+                <span asp-validation-for="statusType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="assetPurchaseId" class="control-label"></label>
+                <select asp-for="assetPurchaseId" class="form-control" asp-items="ViewBag.assetPurchaseId"></select>
+                <span asp-validation-for="assetPurchaseId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="assignedType" class="control-label"></label>
+                <select asp-for="assignedType" class="form-control"></select>
+                <span asp-validation-for="assignedType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="assignmentStatus" class="control-label"></label>
+                <select asp-for="assignmentStatus" class="form-control"></select>
+                <span asp-validation-for="assignmentStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="acceptedBy" class="control-label"></label>
+                <input asp-for="acceptedBy" class="form-control" />
+                <span asp-validation-for="acceptedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="checkedinDate" class="control-label"></label>
+                <input asp-for="checkedinDate" class="form-control" />
+                <span asp-validation-for="checkedinDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="returnedDate" class="control-label"></label>
+                <input asp-for="returnedDate" class="form-control" />
+                <span asp-validation-for="returnedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="locationId" class="control-label"></label>
+                <input asp-for="locationId" class="form-control" />
+                <span asp-validation-for="locationId" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="createdAt" class="control-label"></label>
+                <input asp-for="createdAt" class="form-control" />
+                <span asp-validation-for="createdAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="createdBy" class="control-label"></label>
+                <input asp-for="createdBy" class="form-control" />
+                <span asp-validation-for="createdBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="modifiedAt" class="control-label"></label>
+                <input asp-for="modifiedAt" class="form-control" />
+                <span asp-validation-for="modifiedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="modifiedBy" class="control-label"></label>
+                <input asp-for="modifiedBy" class="form-control" />
+                <span asp-validation-for="modifiedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

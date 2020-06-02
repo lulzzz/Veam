@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# ET001: Type name does not match file name
+dotnet_diagnostic.ET001.severity = suggestion

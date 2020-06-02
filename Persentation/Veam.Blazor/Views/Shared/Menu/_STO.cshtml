@@ -1,0 +1,55 @@
+﻿@model Veam.Models.ApplicationUser
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject Veam.Data.ApplicationDbContext Context
+@{
+    ApplicationUser appUser = await UserManager.GetUserAsync(User);
+
+}
+
+
+<li class="@Html.IsSelected(actions: "TransferOrder") treeview">
+    <a href="#">
+        <i class="fa fa-dashboard"></i> <span>Stock Transfer</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
+        @if (appUser.HomeRole)
+        {
+            <li class="@Html.IsSelected(controller: "Stock")">
+                <a href="@Url.Action("Index", "Stock")">
+                    <i class="fa fa-cube"></i> <span>Stock</span>
+                </a>
+            </li>
+        }
+
+        @if (appUser.HomeRole)
+        {
+            <li class="@Html.IsSelected(controller: "TransferOrder")">
+                <a href="@Url.Action("Index", "TransferOrder")">
+                    <i class="fa fa-recycle"></i> <span>Transfer Order</span>
+                </a>
+            </li>
+        }
+
+        @if (appUser.HomeRole)
+        {
+            <li class="@Html.IsSelected(controller: "TransferOut")">
+                <a href="@Url.Action("Index", "TransferOut")">
+                    <i class="fa fa-upload"></i> <span>Transfer Out</span>
+                </a>
+            </li>
+        }
+
+        @if (appUser.HomeRole)
+        {
+            <li class="@Html.IsSelected(controller: "TransferIn")">
+                <a href="@Url.Action("Index", "TransferIn")">
+                    <i class="fa fa-download"></i> <span>Transfer In</span>
+                </a>
+            </li>
+        }
+    </ul>
+</li>

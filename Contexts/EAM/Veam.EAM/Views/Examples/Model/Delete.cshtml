@@ -1,0 +1,57 @@
+﻿@model Veam.EAM.Domain.AssetModels
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
+}
+
+
+<div>
+   
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.modelName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.modelName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.modelNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.modelNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.modelImage)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.modelImage)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.manufacturer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.manufacturer.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.product)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.product.productId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.createdAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.createdAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+    </dl>
+    
+    
+</div>

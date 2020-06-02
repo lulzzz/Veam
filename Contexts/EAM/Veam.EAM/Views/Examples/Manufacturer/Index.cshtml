@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Veam.EAM.Domain.Manufacturer>
+@*@inject UserManager<ApplicationUser> UserManager*@
+@{
+   // ApplicationUser appUser = await UserManager.GetUserAsync(User);
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminlteNetcoreIndex.cshtml";
+    ViewData["EntityIcon"] = "fa fa-bandcamp";
+    ViewData["ListTitle"] = "List Of Manufacturer";
+}
+
+<table class="table table-hover table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Create" class="btn bg-olive-active btn-sm "><i class="fa fa-plus margin-r-5"></i><span>Add New</span></a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.logoImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.website)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.serviceSupportUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.serviceSupportPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.serviceSupportEmail)
+            </th>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <div class="tools">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-xs"><i class="fa fa-list"></i></a>
+                        @*@if (appUser.CustomerRole) {*@ 
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                         @*}*@
+                    </div>
+
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.logoImage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.website)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.serviceSupportUrl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.serviceSupportPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.serviceSupportEmail)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@*<script>
+        $('.table').DataTable({ columnDefs: [ { goals: [5]  }]  });
+    </script>*@

@@ -1,0 +1,49 @@
+﻿@model Veam.CenterRent.ViewModels.BuildingQueryVM
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
+    ViewData["EntityIcon"] = "fa fa-building-o";
+    ViewData["DeleteInfo"] = "Existing Centers With Assets cannot be deleted!";
+    //netcore.Models.Invent.Warehouse wh = _context.Warehouse.Where(x => x.branchId.Equals(Model.branchId)).FirstOrDefault();
+    //ViewData["IsCanDeleted"] = false;
+    //if (wh == null)
+    //{
+    //    ViewData["IsCanDeleted"] = true;
+    //}
+}
+
+
+@Html.Partial("_StatusMessage", (string)ViewBag.StatusMessage)
+    <div>
+
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.buildingId)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.buildingId)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.buildingNo)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.buildingNo)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.buildingName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.buildingName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Addressfull)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Addressfull)
+            </dd>
+            
+        </dl>
+
+    </div>

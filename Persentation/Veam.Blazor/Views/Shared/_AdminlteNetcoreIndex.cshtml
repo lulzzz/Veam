@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject Veam.Data.ApplicationDbContext Context
+@{
+
+    ApplicationUser appUser = await UserManager.GetUserAsync(User);
+    string controller = (string)ViewContext.RouteData.Values["controller"];
+    string listTitle = ViewData["ListTitle"] as string;
+    string entityIcon = ViewData["EntityIcon"] as string;
+}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>@ViewData["Title"]</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    @Html.Partial("_AdminlteNetcoreBasicStyles")
+
+    @RenderSection("Styles", required: false)
+
+</head>
+<body class="hold-transition skin-purple fixed sidebar-mini">
+    <div class="wrapper">
+        @Html.Partial("_AdminlteNetcoreMainHeader", appUser)
+        <!-- Left side column. contains the logo and sidebar -->
+        @Html.Partial("_AdminlteNetcoreMainSidebar", appUser)
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <div class="col-md-12">
+
+
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <div class="text-left">
+                                    <h3 class="box-title "><i class="@entityIcon text-primary"></i> <span class="text-bold"> @listTitle</span></h3>
+                                </div>
+
+                                <div class="text-center no-margin">
+                                    <button type="button" id="btn-export-excel" class="btn btn-success btn-sm"><i class="fa fa-file-excel-o"></i></button>
+                                    <button type="button" id="btn-export-pdf" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf-o"></i></button>
+                                    <button type="button" id="btn-export-csv" class="btn btn-primary btn-sm"><i class="fa fa-file-text-o"></i></button>
+                                </div>
+
+                                <div class="box-tools">
+                                    <div class="has-feedback pull-right">
+                                        <input type="text" id="mainSearch" class="form-control input-sm" placeholder="Search...">
+                                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                    </div>
+                                </div>
+                                <!-- /.box-tools -->
+                                @*<div class="mailbox-controls ">*@
+
+                                @*</div>*@
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body no-padding">
+
+
+                                <div class="table-responsive mailbox-messages">
+                                    @RenderBody()
+                                    <!-- /.table -->
+                                </div>
+                                <!-- /.mail-box-messages -->
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer no-padding">
+
+                            </div>
+                        </div>
+                        @*<div class="callout bg-gray " style="margin-bottom: 0!important;">
+                                <h4><i class="fa fa-info"></i> Info:</h4>
+                                <p>
+                                    @ViewBag.IndexInfo
+                                </p>
+                            </div>*@
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        @Html.Partial("_AdminlteNetcoreFooter")
+
+    </div>
+    <!-- ./wrapper -->
+
+    @Html.Partial("_AdminlteNetcoreBasicScripts")
+
+    <script>
+        $(document).ready(function () {
+            var mainTable;
+            mainTable = $('.table').DataTable({
+                "lengthChange": false,
+                "info": false,
+                "searching": true,
+                "dom": 'lrtip',
+                "scrollX": false,
+                "buttons": [
+                            {
+                                extend: 'csv',
+                                filename: '@controller-csv'
+                            },
+                            {
+                                extend: 'pdf',
+                                filename: '@controller-pdf'
+                            },
+                            {
+                                extend: 'excel',
+                                filename: '@controller-excel'
+                            }
+                        ]
+            });
+            $('#mainSearch').keyup(function () {
+                mainTable.search($(this).val()).draw();
+            })
+            $("#btn-export-csv").on("click", function() {
+                mainTable.button( '.buttons-csv' ).trigger();
+            })
+            $("#btn-export-excel").on("click", function() {
+                mainTable.button( '.buttons-excel' ).trigger();
+            })
+            $("#btn-export-pdf").on("click", function() {
+                mainTable.button( '.buttons-pdf' ).trigger();
+            })
+        });
+
+
+    </script>
+
+    @RenderSection("Scripts", required: false)
+
+
+</body>
+</html>

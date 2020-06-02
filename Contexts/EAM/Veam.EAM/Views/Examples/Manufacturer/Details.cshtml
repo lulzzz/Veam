@@ -1,0 +1,65 @@
+﻿@model Veam.EAM.Domain.Manufacturer
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
+}
+
+
+<div>
+   
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.website)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.website)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.serviceSupportUrl)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.serviceSupportUrl)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.serviceSupportPhone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.serviceSupportPhone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.serviceSupportEmail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.serviceSupportEmail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.logoImage)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.logoImage)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.createdAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.createdAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

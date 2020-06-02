@@ -1,0 +1,38 @@
+﻿@model Veam.EAM.ViewModels.AssetPurchaseQueryVM
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminlteNetcoreIndex.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AssetPurchase</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.billNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.billNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.billedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.billedDate)
+        </dd>
+         
+        <dt>
+            @Html.DisplayNameFor(model => model.notes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.notes)
+        </dd> 
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.assetpurchaseId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

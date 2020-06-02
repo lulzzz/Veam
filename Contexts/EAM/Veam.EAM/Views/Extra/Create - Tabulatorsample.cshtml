@@ -1,0 +1,235 @@
+﻿@model Veam.EAM.ViewModels.AssetPurchaseSaveVM
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
+}
+
+
+
+
+<Seperator id="BillDetails" name="Bill Details">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="billNo" class="control-label"></label>
+                <input id="BillNo" asp-for="billNo" class="form-control" />
+                <span asp-validation-for="billNo" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="billedDate" class="control-label"></label>
+                <DatePicker>
+                    <input id="BillDate" asp-for="billedDate" value="" class="form-control  pull-right datepicker" type="text" />
+                </DatePicker>
+                <span asp-validation-for="billedDate" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label asp-for="notes" class="control-label"></label>
+                <input Id="Notes" asp-for="notes" class="form-control" />
+                <span asp-validation-for="notes" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+</Seperator>
+
+<Seperator id="asset" name="Select Asset Of the Bill">
+
+    <div class=" row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="centerId" class="control-label"></label>
+                <select id="centerList" asp-for="centerId" class="form-control select2" asp-items="@Model.CenterList"></select>
+                <span asp-validation-for="centerId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="hallid" class="control-label"></label>
+                <select id="hallList" asp-for="hallid" class="form-control select2" asp-items="@Model.HallList"></select>
+                <span asp-validation-for="hallid" class="text-danger"></span>
+            </div>
+        </div>
+        @*<div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="assetId" class="control-label"></label>
+                    <select id="assetList" asp-for="assetId " class="form-control select2" asp-items="@Model.AssetList"></select>
+                    <span asp-validation-for="assetId" class="text-danger"></span>
+                </div>
+            </div>*@
+        @*<div class="col-md-3">
+                <div class="form-group">
+                    <input type="button" id="add" value="add" />
+                </div>
+            </div>*@
+    </div>
+
+    <div style="padding:10px 0px; text-align:right">
+        <input id="submit" type="button" value="Save" style="padding:10px 20px" />
+    </div>
+    <div id="BillItems" class="tablecontainer">
+
+    </div>
+
+</Seperator>
+@*<partial name="_Grid" />*@
+
+
+
+@section Styles{
+   
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/adminlte/plugins/iCheck/all.css" />
+
+}
+
+@section Scripts {
+
+ 
+    <!-- iCheck -->
+    <script src="~/adminlte/plugins/iCheck/icheck.min.js"></script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+    <script>
+        //var baseUrl = document.location.origin;
+        //var apiEndpoint = "/Home/GetTabulatorData";
+        var entity = 'Asset';
+        var apiurl = '/api/' + entity;
+        var BillItems = [];
+        var Id = 0;
+        //Build Tabulator
+        var table = new Tabulator("#BillItems", {
+            layout: "fitColumns",
+            height: "250px",
+            selectable: true, //make rows selectable
+            ajaxURL: apiurl,  //'?masterid=@Model.vendorId', baseUrl + apiEndpoint,*/
+            ajaxFiltering: true,
+            ajaxSorting: true,
+            pagination: "remote",
+            paginationSize: 10,
+            paginationSizeSelector: [10, 20, 30, 50],
+            columns: [
+                {
+
+                    formatter: "rowSelection", titleFormatter: "rowSelection", align: "center", headerSort: false, cellClick: function (cell) {
+                     cell.getRow().toggleSelect();
+                    }
+                },
+
+                { title: "Id", field: "assetId",sorter:"number", width:10 },
+                { title: "assetName", field: "assetName", width: 100, align: "right", sorter: "number" },
+                { title: "assetTag", field: "assetTag", width: 100 },
+                { title: "modalname", field: "modalname" },
+                { title: "modelNo", field: "modelNo", align: "center", sorter: "date" },
+                { title: "brand", field: "brand", align: "center", width: 100 },
+                { title: "product", field: "product", align: "center", width: 100 },
+                { title: "status", field: "status", align: "center", width: 100 },
+            ],
+
+            rowSelectionChanged: function (data, rows) {
+                //var selectedData = rows.getSelectedData();
+                //alert(selectedData);
+               //Id = data.getData().assetId;
+               //         alert(Id);
+               //          BillItems.push({ //update selected row to BillItem[]
+               //                      assetId: Id,
+               //                  });
+            }// row selection end
+        });//tabulator end
+
+                        //Save button click function
+                            $('#submit').click(function () {
+                                //validation of order
+                                var isAllValid = true;
+                                if (BillItems.length == 0) {
+                                    alert("Please selected atleast one item");
+                                    isAllValid = false;
+                                }
+
+                                //Save if valid
+                                if (isAllValid) {
+                                    var data = {
+                                       billNo: $('#BillNo').val(),
+                                       billDate: $('#BillDateDate').val(),
+                                       notes : $('#Notes').val(),
+                                       Assets : BillItems
+                                    }
+
+                                    $(this).val('Please wait...');
+
+                                    $.ajax({
+                                        url: '/AssetPurchase/Create',
+                                        type: "POST",
+                                        data: JSON.stringify(data),
+                                       // dataType: "JSON",
+                                        contentType: "application/json",
+                                        success: function (d) {
+                                            //check is successfully save to database
+                                            if (d.status == true) {
+                                                //will send status from server side
+                                                alert('Successfully done.');
+                                                //clear form
+                                                BillItems = [];
+                                                $('#BillNo').val('');
+                                                $('#BillDate').val('');
+                                                $('#BillItems').empty();
+                                            }
+                                            else {
+                                                alert('Failed');
+                                            }
+                                            $('#submit').val('Save');
+                                        },
+                                        error: function () {
+                                            alert('Error. Please try again.');
+                                            $('#submit').val('Save');
+                                        }
+                                    });
+                                }
+
+                            });
+
+          @*</script>
+
+          <script>*@
+          $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' /* optional */
+            });
+        });
+        $('.datepicker').datepicker({
+            autoclose: true,
+            dateFormat: 'mm-dd-yy'
+        });
+
+
+        function loadHallByCenter() {
+             $('#centerList').change(function () {
+           var url = '@Url.Content("~/")' + "Select/GetHallbyCenterId";
+             $.getJSON(url, { centerId: $("#centerList").val() }, function (data) {
+            var items = '';
+            $("#hallList").empty();
+            $.each(data, function (i, section) {
+                items += "<option value='" + section.value + "'>" + section.text + "</option>";
+            });
+                 $('#hallList').html(items);
+                });
+         });
+        };
+
+           //$(document).ready(function () {
+           // loadHallByCenter();
+           //});
+    </script>
+
+}

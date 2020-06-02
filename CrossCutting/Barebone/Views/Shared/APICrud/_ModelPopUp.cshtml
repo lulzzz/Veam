@@ -1,0 +1,27 @@
+﻿<!--modal placeholder-->
+<div class="modal modal-primary fade" id="modalDefault">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+
+ 
+    <script>
+     
+        function ShowPopup(url) {
+            var modalId = 'modalDefault';
+            var modalPlaceholder = $('#' + modalId + ' .modal-dialog .modal-content');
+            $.get(url)
+                .done(function (response) {
+                    modalPlaceholder.html(response);
+                    popup = $('#' + modalId + '').modal({
+                        keyboard: false,
+                        backdrop: 'static'
+                    });
+                });
+        }
+
+    </script>
+ 
